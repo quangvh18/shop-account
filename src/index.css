@@ -160,7 +160,7 @@ All colors MUST be HSL.
 
   /* Glass effect */
   .glass {
-    @apply bg-background/80 backdrop-blur-md border border-border/50;
+    @apply bg-background/80 backdrop-blur-md;
   }
 
   /* Animated border */
@@ -221,6 +221,33 @@ All colors MUST be HSL.
 
   .animate-slide-in {
     animation: slideIn 0.3s ease-out;
+  }
+
+  /* Zalo floating animation */
+  @keyframes zaloFloat {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes zaloPulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.7);
+    }
+    50% {
+      box-shadow: 0 0 0 10px rgba(0, 104, 255, 0);
+    }
+  }
+
+  .animate-zalo-float {
+    animation: zaloFloat 3s ease-in-out infinite;
+  }
+
+  .animate-zalo-pulse {
+    animation: zaloPulse 2s ease-in-out infinite;
   }
 }
 

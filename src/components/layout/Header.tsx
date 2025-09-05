@@ -78,7 +78,7 @@ const Header = () => {
         {/* Navigation */}
         <nav className="flex items-center gap-2 sm:gap-3">
           {/* Desktop navigation */}
-          <Button variant="soft" className="hidden lg:inline-flex btn-soft" asChild>
+          <Button variant="default" className="hidden lg:inline-flex btn-hero" asChild>
             <Link to="/search">
               <UserRound className="h-4 w-4 mr-2" /> 
               Sản phẩm
