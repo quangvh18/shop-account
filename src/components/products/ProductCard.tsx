@@ -36,7 +36,7 @@ const ProductCard = ({ product }: { product: Product }) => {
           
           {/* Price */}
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-lg sm:text-xl font-bold gradient-text">
+            <span className="text-md sm:text-lg font-bold gradient-text">
               {currency(product.price)}
             </span>
             {product.originalPrice && (
@@ -47,7 +47,7 @@ const ProductCard = ({ product }: { product: Product }) => {
           </div>
           
           {/* Action Button */}
-          <div className="pt-2 mt-auto">
+          <div className="pt-1 mt-auto">
             <Button variant="soft" asChild className="w-full btn-soft">
               <Link to={`/product/${product.slug}`}>
                 Xem chi tiết

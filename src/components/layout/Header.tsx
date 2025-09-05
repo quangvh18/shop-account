@@ -21,7 +21,7 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-40 border-b glass shadow-soft">
+    <header className="sticky top-0 z-40 glass shadow-soft">
       {/* Top banner - hidden on mobile */}
       <div className="hidden lg:block bg-gradient-to-r from-primary to-primary/90 text-primary-foreground">
         <div className="container mx-auto flex items-center justify-between py-2 px-4 text-sm">

@@ -20,6 +20,7 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: ["Be Vietnam Pro", "ui-sans-serif", "system-ui", "sans-serif"],
+				admin: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

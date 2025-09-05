@@ -17,6 +17,10 @@ import Privacy from "./pages/Privacy";
 import Contact from "./pages/Contact";
 import ThankYou from "./pages/ThankYou";
 import Recruitment from "./pages/Recruitment";
+import FloatingZalo from "@/components/ui/zalo-float";
+import AdminLayout from "./pages/AdminLayout";
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminAccounts from "./pages/AdminAccounts";
 
 const queryClient = new QueryClient();
 
@@ -45,9 +49,15 @@ const App = () => (
               <Route path="/contact" element={<Contact />} />
               <Route path="/thankyou" element={<ThankYou />} />
               <Route path="/recruitment" element={<Recruitment />} />
+              <Route path="/admin" element={<AdminLayout />}>
+                <Route index element={<AdminDashboard />} />
+                <Route path="accounts" element={<AdminAccounts />} />
+              </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
+          {/* Global floating helpers */}
+          <FloatingZalo zaloUrl="https://zalo.me/0344396798" />
         </CartProvider>
       </HelmetProvider>
     </TooltipProvider>

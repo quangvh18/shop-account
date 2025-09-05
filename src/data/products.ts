@@ -4,13 +4,15 @@ import claudeImg from "@/assets/claude-1m.png";
 import youtubeImg from "@/assets/youtube-1y.png";
 import youtube6Img from "@/assets/youtube-6m.png";
 import duolingoImg from "@/assets/douligo-1y.png";
+import spotify3Img from "@/assets/spotify-3m.png";
 import spotifyImg from "@/assets/spotify-1y.png";
 import spotify6Img from "@/assets/spotify-6m.png";
 import capcut1mImg from "@/assets/capcut-1m.png";
 import capcut1yImg from "@/assets/capcut-1y.png";
-import gemini1mImg from "@/assets/gemini-1m.png";
 import netflix1mImg from "@/assets/netflix-1m.png";
 import grok1mImg from "@/assets/grok-1m.png";
+import googleOne1yImg from "@/assets/google-one-2tb-1y.png";
+import perplexityPro12mImg from "@/assets/perplexity-pro-12m.png";
 
 export type Product = {
   id: string;
@@ -32,7 +34,9 @@ export type Product = {
     | "CapCut Pro"
     | "Gemini Pro"
     | "Netflix Premium"
-    | "SuperGrok";
+    | "SuperGrok"
+    | "Google One"
+    | "Perplexity Pro";
 };
 
 export const products: Product[] = [
@@ -105,13 +109,13 @@ export const products: Product[] = [
     accountType: "Duolingo Super",
   },
   {
-    id: "spotify-premium",
-    slug: "spotify-premium-1-nam",
-    name: "Spotify Premium 1 năm - TK chính chủ",
-    price: 420000,
-    originalPrice: 708000,
+    id: "spotify-premium-3-thang",
+    slug: "spotify-premium-3-thang",
+    name: "Spotify Premium 3 tháng - TK chính chủ",
+    price: 140000,
+    originalPrice: 177000,
     tags: ["music", "spotify"],
-    image: spotifyImg,
+    image: spotify3Img,
     status: "in_stock",
     category: "Âm nhạc",
     accountType: "Spotify Premium",
@@ -120,10 +124,22 @@ export const products: Product[] = [
     id: "spotify-premium-6-thang",
     slug: "spotify-premium-6-thang",
     name: "Spotify Premium 6 tháng - TK chính chủ",
-    price: 280000,
+    price: 260000,
     originalPrice: 354000,
     tags: ["music", "spotify"],
     image: spotify6Img,
+    status: "in_stock",
+    category: "Âm nhạc",
+    accountType: "Spotify Premium",
+  },
+  {
+    id: "spotify-premium",
+    slug: "spotify-premium-1-nam",
+    name: "Spotify Premium 1 năm - TK chính chủ",
+    price: 420000,
+    originalPrice: 708000,
+    tags: ["music", "spotify"],
+    image: spotifyImg,
     status: "in_stock",
     category: "Âm nhạc",
     accountType: "Spotify Premium",
@@ -165,18 +181,6 @@ export const products: Product[] = [
     accountType: "CapCut Pro",
   },
   {
-    id: "gemini-1m",
-    slug: "gemini-1-thang",
-    name: "Gemini Pro 1 tháng - TK chính chủ",
-    price: 100000,
-    originalPrice: 500000,
-    tags: ["ai", "gemini"],
-    image: gemini1mImg,
-    status: "in_stock",
-    category: "AI",
-    accountType: "Gemini Pro",
-  },
-  {
     id: "netflix-1m",
     slug: "netflix-1m",
     name: "Netflix 1 tháng - TK chính chủ",
@@ -199,6 +203,42 @@ export const products: Product[] = [
     status: "in_stock",
     category: "AI",
     accountType: "SuperGrok",
+  },
+  {
+    id: "google-one-2tb-1m",
+    slug: "google-one-2tb-1-thang",
+    name: "Google One 2TB 1 tháng + Gemini Pro",
+    price: 100000,
+    originalPrice: 500000,
+    tags: ["ai", "gemini", "google one", "notebook lm", "veo 3"],
+    image: googleOne1yImg,
+    status: "in_stock",
+    category: "AI",
+    accountType: "Google One",
+  },
+  {
+    id: "google-one-2tb-1y",
+    slug: "google-one-2tb-1-nam",
+    name: "Google One 2TB 1 năm + Gemini Pro",
+    price: 900000,
+    originalPrice: 6000000,
+    tags: ["ai", "gemini", "google one", "notebook lm", "veo 3"],
+    image: googleOne1yImg,
+    status: "in_stock",
+    category: "AI",
+    accountType: "Google One",
+  },
+  {
+    id: "perplexity-pro-12m",
+    slug: "perplexity-pro-12m",
+    name: "Perplexity Pro 12 tháng - TK chính chủ",
+    price: 380000,
+    originalPrice: 6000000,
+    tags: ["ai", "perplexity"],
+    image: perplexityPro12mImg,
+    status: "in_stock",
+    category: "AI",
+    accountType: "Perplexity Pro",
   },
 ];
 
