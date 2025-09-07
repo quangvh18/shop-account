@@ -1,11 +1,19 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { products, Product } from "@/data/products";
 
-export type CartItem = { productId: string; quantity: number };
+export type CartItem = { 
+  productId: string; 
+  quantity: number;
+  credentials?: {
+    email?: string;
+    password?: string;
+    twofa?: string;
+  };
+};
 
 type CartContextType = {
   items: CartItem[];
-  add: (productId: string, quantity?: number) => void;
+  add: (productId: string, quantity?: number, credentials?: CartItem["credentials"]) => void;
   remove: (productId: string) => void;
   setQty: (productId: string, quantity: number) => void;
   clear: () => void;
@@ -31,11 +39,11 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
   }, [items]);
 
-  const add = (productId: string, quantity = 1) => {
+  const add = (productId: string, quantity = 1, credentials?: CartItem["credentials"]) => {
     setItems((prev) => {
       const found = prev.find((i) => i.productId === productId);
-      if (found) return prev.map((i) => (i.productId === productId ? { ...i, quantity: i.quantity + quantity } : i));
-      return [...prev, { productId, quantity }];
+      if (found) return prev.map((i) => (i.productId === productId ? { ...i, quantity: i.quantity + quantity, credentials: credentials ?? i.credentials } : i));
+      return [...prev, { productId, quantity, credentials }];
     });
   };
 

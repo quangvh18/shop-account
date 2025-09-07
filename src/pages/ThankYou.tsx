@@ -17,8 +17,8 @@ const ThankYou = () => {
     // Get order info from URL params or localStorage
     const urlParams = new URLSearchParams(window.location.search);
     const orderId = urlParams.get('orderId') || 'N/A';
-    const customerName = localStorage.getItem('customerName') || 'Khách hàng';
-    const customerZalo = localStorage.getItem('customerZalo') || 'Chưa cung cấp';
+    const customerName = urlParams.get('name') || localStorage.getItem('customerName') || 'Khách hàng';
+    const customerZalo = urlParams.get('zalo') || localStorage.getItem('customerZalo') || 'Chưa cung cấp';
 
     setOrderInfo({ orderId, customerName, customerZalo });
 

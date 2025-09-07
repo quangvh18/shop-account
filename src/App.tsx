@@ -21,6 +21,17 @@ import FloatingZalo from "@/components/ui/zalo-float";
 import AdminLayout from "./pages/AdminLayout";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminAccounts from "./pages/AdminAccounts";
+import { useEffect } from "react";
+
+const ScrollToTop = () => {
+  useEffect(() => {
+    const unlisten = (history as any)?.listen?.(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    return () => unlisten && unlisten();
+  }, []);
+  return null;
+};
 
 const queryClient = new QueryClient();
 
@@ -37,6 +48,7 @@ const App = () => (
               v7_relativeSplatPath: true,
             }}
           >
+            <ScrollToTop />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/product/:slug" element={<Product />} />

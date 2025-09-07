@@ -342,6 +342,8 @@ const SidebarInput = React.forwardRef<
         "h-8 w-full bg-background shadow-none focus-visible:ring-2 focus-visible:ring-sidebar-ring",
         className
       )}
+      // Prevent auto-focus on mobile when sidebar opens
+      autoFocus={false}
       {...props}
     />
   )

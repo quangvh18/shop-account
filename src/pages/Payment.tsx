@@ -26,6 +26,9 @@ const Payment = () => {
       const customerZalo = localStorage.getItem('customerZalo') || 'Chưa cung cấp';
       
       // Prepare order data for notification
+      const accountEmail = localStorage.getItem('accountEmail') || '';
+      const accountPassword = localStorage.getItem('accountPassword') || '';
+      const accountTwoFA = localStorage.getItem('accountTwoFA') || '';
       const orderData = {
         orderId,
         customerName,
@@ -33,9 +36,13 @@ const Payment = () => {
         items: detailed.map(item => ({
           name: item.product.name,
           quantity: item.quantity,
-          price: item.product.price * item.quantity
+          price: item.product.price * item.quantity,
+          credentials: item.credentials,
         })),
         total,
+        accountEmail,
+        accountPassword,
+        accountTwoFA,
         timestamp: new Date().toLocaleString('vi-VN', {
           timeZone: 'Asia/Ho_Chi_Minh',
           year: 'numeric',
@@ -71,9 +78,17 @@ const Payment = () => {
       // Clean up localStorage
       localStorage.removeItem('customerName');
       localStorage.removeItem('customerZalo');
+      localStorage.removeItem('accountEmail');
+      localStorage.removeItem('accountPassword');
+      localStorage.removeItem('accountTwoFA');
       
       setTimeout(() => {
-        navigate(`/thankyou?orderId=${orderId}`);
+        const params = new URLSearchParams({
+          orderId,
+          name: customerName,
+          zalo: customerZalo,
+        });
+        navigate(`/thankyou?${params.toString()}`);
       }, 600);
       
     } catch (error) {

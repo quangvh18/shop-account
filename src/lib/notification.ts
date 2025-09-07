@@ -7,8 +7,16 @@ export interface OrderData {
     name: string;
     quantity: number;
     price: number;
+    credentials?: {
+      email?: string;
+      password?: string;
+      twofa?: string;
+    };
   }>;
   total: number;
+  accountEmail?: string;
+  accountPassword?: string;
+  accountTwoFA?: string;
   timestamp: string;
 }
 
@@ -40,6 +48,13 @@ class NotificationService {
       message += `${index + 1}. ${item.name}\n`;
       message += `   Số lượng: ${item.quantity}\n`;
       message += `   Giá: ${this.formatCurrency(item.price)}\n\n`;
+      if (item.credentials && (item.credentials.email || item.credentials.password || item.credentials.twofa)) {
+        message += `   🔐 Tài khoản:\n`;
+        if (item.credentials.email) message += `      Email: ${item.credentials.email}\n`;
+        if (item.credentials.password) message += `      Mật khẩu: ${item.credentials.password}\n`;
+        if (item.credentials.twofa) message += `      Mã 2FA: ${item.credentials.twofa}\n`;
+        message += `\n`;
+      }
     });
     
     message += `💰 *TỔNG TIỀN: ${this.formatCurrency(total)}*\n\n`;

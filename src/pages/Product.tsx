@@ -20,6 +20,7 @@ const Product = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [twofa, setTwofa] = useState("");
   const [error, setError] = useState("");
 
   if (!product) return <div className="p-8">Không tìm thấy sản phẩm.</div>;
@@ -38,7 +39,11 @@ const handleAdd = () => {
     return;
   }
   setError("");
-  add(product.id, 1);
+  // Store account credentials for order notification
+  localStorage.setItem('accountEmail', email);
+  localStorage.setItem('accountPassword', password);
+  if (twofa) localStorage.setItem('accountTwoFA', twofa);
+  add(product.id, 1, { email, password, twofa });
   toast({
     title: "Đã thêm vào giỏ hàng",
     description: (
@@ -59,7 +64,10 @@ const handleAdd = () => {
       return;
     }
     setError("");
-    add(product.id, 1);
+    localStorage.setItem('accountEmail', email);
+    localStorage.setItem('accountPassword', password);
+    if (twofa) localStorage.setItem('accountTwoFA', twofa);
+    add(product.id, 1, { email, password, twofa });
     toast({
       title: "Đã thêm vào giỏ hàng",
       description: (
@@ -104,7 +112,7 @@ const handleAdd = () => {
             {/* <Input placeholder="Tên khách hàng" value={name} onChange={e=>setName(e.target.value)} /> */}
             <Input placeholder="Email đăng nhập" value={email} onChange={e=>setEmail(e.target.value)} />
             <Input placeholder="Mật khẩu" type="password" value={password} onChange={e=>setPassword(e.target.value)} />
-            <Input placeholder="Mã 2FA (nếu có)" />
+            <Input placeholder="Mã 2FA (nếu có)" value={twofa} onChange={e=>setTwofa(e.target.value)} />
             {error && <div className="text-sm text-red-500 pt-1">{error}</div>}
             <div className="text-sm text-muted-foreground">Hướng dẫn lấy mã sẽ hiển thị trong quá trình thanh toán.</div>
           </div>
