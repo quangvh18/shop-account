@@ -115,6 +115,63 @@ const handleAdd = () => {
         </div>
       </main>
 
+      {/* Product Details Section */}
+      {product.description && (
+        <section className="container mx-auto px-4 mt-8 mb-12">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl font-bold mb-6">Mô tả chi tiết</h2>
+            <div className="bg-muted/30 rounded-lg p-6">
+              <p className="text-muted-foreground leading-relaxed">{product.description}</p>
+            </div>
+            
+            {/* Additional Product Info */}
+            <div className="grid gap-6 mt-8 md:grid-cols-2">
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold">Thông tin sản phẩm</h3>
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Danh mục:</span>
+                    <span className="font-medium">{product.category}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Loại tài khoản:</span>
+                    <span className="font-medium">{product.accountType}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Trạng thái:</span>
+                    <Badge variant={product.status === "in_stock" ? "default" : "destructive"}>
+                      {product.status === "in_stock" ? "Còn hàng" : "Hết hàng"}
+                    </Badge>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold">Cam kết dịch vụ</h3>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                    <span>Tài khoản chính chủ 100%</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                    <span>Hỗ trợ kỹ thuật 24/7</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                    <span>Giao hàng tự động sau thanh toán</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                    <span>Bảo hành trong thời gian sử dụng</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       <Footer />
     </>
   );

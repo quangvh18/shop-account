@@ -37,6 +37,9 @@ const Checkout = () => {
 
   const handleContinue = () => {
     if (validateForm()) {
+      // Store customer info in localStorage for payment processing
+      localStorage.setItem('customerName', name);
+      localStorage.setItem('customerZalo', zalo);
       navigate('/payment');
     }
   };

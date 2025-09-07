@@ -105,6 +105,8 @@ export const products: Product[] = [
     tags: ["education"],
     image: duolingoImg,
     status: "in_stock",
+    description:
+      "Tài khoản Duolingo Super chính chủ trong 1 năm. Truy cập không giới hạn các khóa học, không quảng cáo, và các tính năng premium.",
     category: "Học tập",
     accountType: "Duolingo Super",
   },
@@ -117,6 +119,8 @@ export const products: Product[] = [
     tags: ["music", "spotify"],
     image: spotify3Img,
     status: "in_stock",
+    description:
+      "Tài khoản Spotify Premium chính chủ trong 3 tháng. Nghe nhạc không quảng cáo, tải nhạc ngoại tuyến, chất lượng cao.",
     category: "Âm nhạc",
     accountType: "Spotify Premium",
   },
@@ -129,6 +133,8 @@ export const products: Product[] = [
     tags: ["music", "spotify"],
     image: spotify6Img,
     status: "in_stock",
+    description:
+      "Tài khoản Spotify Premium chính chủ trong 6 tháng. Nghe nhạc không quảng cáo, tải nhạc ngoại tuyến, chất lượng cao.",
     category: "Âm nhạc",
     accountType: "Spotify Premium",
   },
@@ -141,6 +147,8 @@ export const products: Product[] = [
     tags: ["music", "spotify"],
     image: spotifyImg,
     status: "in_stock",
+    description:
+      "Tài khoản Spotify Premium chính chủ trong 1 năm. Nghe nhạc không quảng cáo, tải nhạc ngoại tuyến, chất lượng cao.",
     category: "Âm nhạc",
     accountType: "Spotify Premium",
   },
@@ -153,6 +161,8 @@ export const products: Product[] = [
     tags: ["ai", "claude"],
     image: claudeImg,
     status: "in_stock",
+    description:
+      "Tài khoản Claude Pro chính chủ với $20 credit trong 1 tháng. Truy cập Claude Sonnet 3.5, xử lý tài liệu, phân tích dữ liệu.",
     category: "AI",
     accountType: "Claude Pro",
   },
@@ -165,6 +175,8 @@ export const products: Product[] = [
     tags: ["video", "capcut"],
     image: capcut1mImg,
     status: "in_stock",
+    description:
+      "Tài khoản CapCut Pro chính chủ trong 1 tháng. Truy cập tất cả hiệu ứng premium, xuất video chất lượng cao, không watermark.",
     category: "Video Editor",
     accountType: "CapCut Pro",
   },
@@ -177,6 +189,8 @@ export const products: Product[] = [
     tags: ["video", "capcut"],
     image: capcut1yImg,
     status: "in_stock",
+    description:
+      "Tài khoản CapCut Pro chính chủ trong 1 năm. Truy cập tất cả hiệu ứng premium, xuất video chất lượng cao, không watermark.",
     category: "Video Editor",
     accountType: "CapCut Pro",
   },
@@ -189,6 +203,8 @@ export const products: Product[] = [
     tags: ["movie", "netflix"],
     image: netflix1mImg,
     status: "in_stock",
+    description:
+      "Tài khoản Netflix Premium chính chủ trong 1 tháng. Xem phim không giới hạn, chất lượng 4K, nhiều thiết bị.",
     category: "Giải trí",
     accountType: "Netflix Premium",
   },
@@ -201,6 +217,8 @@ export const products: Product[] = [
     tags: ["ai", "grok"],
     image: grok1mImg,
     status: "in_stock",
+    description:
+      "Tài khoản SuperGrok chính chủ trong 1 tháng. AI chatbot của X (Twitter) với khả năng truy cập thông tin real-time.",
     category: "AI",
     accountType: "SuperGrok",
   },
@@ -213,6 +231,8 @@ export const products: Product[] = [
     tags: ["ai", "gemini", "google one", "notebook lm", "veo 3"],
     image: googleOne1yImg,
     status: "in_stock",
+    description:
+      "Tài khoản Google One 2TB chính chủ trong 1 tháng. Bao gồm Gemini Pro, NotebookLM, Veo 3, và nhiều tính năng AI khác.",
     category: "AI",
     accountType: "Google One",
   },
@@ -225,6 +245,8 @@ export const products: Product[] = [
     tags: ["ai", "gemini", "google one", "notebook lm", "veo 3"],
     image: googleOne1yImg,
     status: "in_stock",
+    description:
+      "Tài khoản Google One 2TB chính chủ trong 1 năm. Bao gồm Gemini Pro, NotebookLM, Veo 3, và nhiều tính năng AI khác.",
     category: "AI",
     accountType: "Google One",
   },
@@ -237,6 +259,8 @@ export const products: Product[] = [
     tags: ["ai", "perplexity"],
     image: perplexityPro12mImg,
     status: "in_stock",
+    description:
+      "Tài khoản Perplexity Pro chính chủ trong 12 tháng. AI search engine với khả năng tìm kiếm và phân tích thông tin chính xác.",
     category: "AI",
     accountType: "Perplexity Pro",
   },

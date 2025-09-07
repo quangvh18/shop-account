@@ -6,28 +6,86 @@ import { currency } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { toast } from "@/hooks/use-toast";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Loader2 } from "lucide-react";
 import qrImage from "@/assets/qrcode.jpg";
+import notificationService from "@/lib/notification";
+import { useState } from "react";
 
 const Payment = () => {
-  const { total, clear } = useCart();
+  const { total, clear, detailed } = useCart();
   const navigate = useNavigate();
   const orderId = Math.random().toString(36).slice(2, 8).toUpperCase();
+  const [isProcessing, setIsProcessing] = useState(false);
 
-  const onDone = () => {
-    clear();
-    toast({
-      title: "Thanh toán thành công!",
-      description: (
-        <div className="flex items-center gap-2">
-          <CheckCircle className="h-5 w-5 text-green-500" />
-          <span>Cảm ơn bạn đã đặt hàng. Liên hệ Zalo 0344396798 để được hỗ trợ nhanh nhất.</span>
-        </div>
-      ),
-    });
-    setTimeout(() => {
-      navigate("/thankyou");
-    }, 600);
+  const onDone = async () => {
+    setIsProcessing(true);
+    
+    try {
+      // Get customer info from localStorage (stored during checkout)
+      const customerName = localStorage.getItem('customerName') || 'Khách hàng';
+      const customerZalo = localStorage.getItem('customerZalo') || 'Chưa cung cấp';
+      
+      // Prepare order data for notification
+      const orderData = {
+        orderId,
+        customerName,
+        customerZalo,
+        items: detailed.map(item => ({
+          name: item.product.name,
+          quantity: item.quantity,
+          price: item.product.price * item.quantity
+        })),
+        total,
+        timestamp: new Date().toLocaleString('vi-VN', {
+          timeZone: 'Asia/Ho_Chi_Minh',
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+        })
+      };
+
+      // Send notification to Telegram only (per request)
+      const telegramSent = await notificationService.sendTelegramNotification(orderData);
+      
+      // Clear cart and show success message
+      clear();
+      
+      // Show success toast reflecting Telegram notification only
+      const notificationText = telegramSent 
+        ? 'Thông báo đã được gửi qua Telegram.'
+        : 'Thông báo Telegram sẽ được gửi trong giây lát.';
+
+      toast({
+        title: "Thanh toán thành công!",
+        description: (
+          <div className="flex items-center gap-2">
+            <CheckCircle className="h-5 w-5 text-green-500" />
+            <span>Cảm ơn bạn đã đặt hàng. {notificationText} Liên hệ Zalo 0344396798 để được hỗ trợ nhanh nhất.</span>
+          </div>
+        ),
+      });
+
+      // Clean up localStorage
+      localStorage.removeItem('customerName');
+      localStorage.removeItem('customerZalo');
+      
+      setTimeout(() => {
+        navigate(`/thankyou?orderId=${orderId}`);
+      }, 600);
+      
+    } catch (error) {
+      console.error('Error processing payment:', error);
+      toast({
+        title: "Có lỗi xảy ra",
+        description: "Vui lòng thử lại hoặc liên hệ hỗ trợ.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   return (
@@ -72,7 +130,21 @@ const Payment = () => {
               <li>Không thay đổi nội dung chuyển khoản để hệ thống xử lý tự động.</li>
             </ol>
             <div className="mt-6 flex justify-end">
-              <Button variant="hero" onClick={onDone}>Hoàn tất</Button>
+              <Button 
+                variant="hero" 
+                onClick={onDone}
+                disabled={isProcessing}
+                className="min-w-[120px]"
+              >
+                {isProcessing ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                    Đang xử lý...
+                  </>
+                ) : (
+                  'Hoàn tất'
+                )}
+              </Button>
             </div>
           </section>
           <aside className="rounded-lg border p-4">
