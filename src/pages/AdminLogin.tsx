@@ -31,8 +31,12 @@ const AdminLogin = () => {
 		const userEmail = (userData.user?.email || "").toLowerCase();
 		const isAdmin = adminEmails.length > 0 && adminEmails.includes(userEmail);
 		const from: string | undefined = location.state?.from;
-		// Chỉ cho phép quay lại các route trong /admin, mặc định vào /admin
-		const target = from && from.startsWith("/admin") ? from : "/admin";
+		if (isAdmin) {
+			const target = from && from.startsWith("/admin") ? from : "/admin";
+			navigate(target, { replace: true });
+			return;
+		}
+		const target = from && from.startsWith("/collaborator") ? from : "/collaborator";
 		navigate(target, { replace: true });
 	};
 
