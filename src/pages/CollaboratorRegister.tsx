@@ -42,7 +42,8 @@ const CollaboratorRegister = () => {
       return;
     }
     setLoading(true);
-    const emailRedirectTo = `${window.location.origin}/collaborator`;
+    const baseUrl = (import.meta as any).env?.VITE_PUBLIC_SITE_URL || window.location.origin;
+    const emailRedirectTo = `${baseUrl}/collaborator`;
     const { data, error } = await supabase.auth.signUp({ email, password, options: { emailRedirectTo } });
     if (error) {
       setLoading(false);
