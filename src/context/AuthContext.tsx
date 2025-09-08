@@ -24,8 +24,24 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 			setSessionLoading(false);
 		};
 		init();
-		const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+		const { data: sub } = supabase.auth.onAuthStateChange(async (_event, session) => {
 			setUser(session?.user ?? null);
+			// Sync pending name/phone from localStorage after login
+			try {
+				if (session?.user) {
+					const meta = session.user.user_metadata || {};
+					const pendingName = localStorage.getItem('pendingName');
+					const pendingPhone = localStorage.getItem('pendingPhone');
+					if ((!meta.name || !String(meta.name).trim()) && pendingName) {
+						await supabase.auth.updateUser({ data: { name: pendingName } });
+						localStorage.removeItem('pendingName');
+					}
+					if ((!meta.phone || !String(meta.phone).trim()) && pendingPhone) {
+						await supabase.auth.updateUser({ data: { phone: pendingPhone } });
+						localStorage.removeItem('pendingPhone');
+					}
+				}
+			} catch {}
 		});
 		return () => {
 			mounted = false;

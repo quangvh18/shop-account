@@ -34,6 +34,7 @@ const AdminLayout = () => {
 				<nav className="space-y-1">
 					<NavItem to="/admin" icon={LayoutDashboard} label="Tổng quan" />
 					<NavItem to="/admin/accounts" icon={Users2} label="Quản lý tài khoản" />
+					<NavItem to="/admin/collaborators" icon={Users2} label="Quản trị CTV" />
 				</nav>
 				<div className="mt-6 flex items-center justify-between">
 					<Link to="/" className="text-xs text-muted-foreground hover:text-foreground">← Quay về trang chủ</Link>

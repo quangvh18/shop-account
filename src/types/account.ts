@@ -11,6 +11,9 @@ export interface Account {
   cost: number; // Chi phí
   revenue: number; // Tổng thu
   profit: number; // Lợi nhuận (revenue - cost)
+  collaboratorRef?: string; // Mã mời CTV (nếu có)
+  collaboratorCommissionPct?: number; // % hoa hồng
+  collaboratorCommission?: number; // Số tiền hoa hồng
   customerAccount: {
     email: string;
     password: string;
@@ -36,6 +39,7 @@ export interface CreateAccountData {
   customerAccount: Account['customerAccount'];
   shopAccount: Account['shopAccount'];
   status: Account['status'];
+  collaboratorRef?: string;
 }
 
 export interface UpdateAccountData extends Partial<CreateAccountData> {

@@ -48,11 +48,18 @@ class NotificationService {
     message += `📱 Zalo: *${customerZalo}*\n`;
     message += `🕐 Thời gian: *${timestamp}*\n\n`;
     if (orderData.collaboratorRef) {
+      const derivedName = orderData.collaboratorName && orderData.collaboratorName.includes('@')
+        ? orderData.collaboratorName.split('@')[0]
+        : orderData.collaboratorName;
+      const safeName = derivedName || (orderData.collaboratorEmail ? orderData.collaboratorEmail.split('@')[0] : undefined);
+      const safePhone = orderData.collaboratorPhone && orderData.collaboratorPhone.trim() !== ''
+        ? orderData.collaboratorPhone
+        : 'Không có';
       message += `🤝 *CỘNG TÁC VIÊN GIỚI THIỆU*\n`;
       message += `   Mã ref: ${orderData.collaboratorRef}\n`;
-      if (orderData.collaboratorName) message += `   Tên: ${orderData.collaboratorName}\n`;
+      if (safeName) message += `   Tên: ${safeName}\n`;
       if (orderData.collaboratorEmail) message += `   Email: ${orderData.collaboratorEmail}\n`;
-      if (orderData.collaboratorPhone) message += `   SĐT: ${orderData.collaboratorPhone}\n`;
+      message += `   SĐT: ${safePhone}\n`;
       message += `\n`;
     }
     

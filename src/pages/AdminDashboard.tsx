@@ -134,6 +134,21 @@ const AdminDashboard: React.FC = () => {
 
 	const chartData = getChartData();
 
+	// Aggregate collaborator commission by ref
+	const collabMap: Record<string, { total: number; count: number }> = {};
+	accounts.forEach(acc => {
+		if (acc.collaboratorRef && acc.collaboratorCommission) {
+			const key = acc.collaboratorRef;
+			if (!collabMap[key]) collabMap[key] = { total: 0, count: 0 };
+			collabMap[key].total += acc.collaboratorCommission || 0;
+			collabMap[key].count += 1;
+		}
+	});
+	const collabList = Object.entries(collabMap)
+		.map(([ref, v]) => ({ ref, total: v.total, count: v.count }))
+		.sort((a, b) => b.total - a.total)
+		.slice(0, 8);
+
 	return (
 		<div className="space-y-6">
 			<h1 className="text-2xl font-bold tracking-tight">Tổng quan</h1>
@@ -186,6 +201,20 @@ const AdminDashboard: React.FC = () => {
 							<div className="text-xl font-semibold">{monthStats.orders} tài khoản</div>
 							<div className="text-sm text-muted-foreground">Doanh thu: {formatCurrency(monthStats.revenue)}</div>
 							<div className="text-sm text-muted-foreground">Lợi nhuận: {formatCurrency(monthStats.profit)}</div>
+						</div>
+					</Box>
+					<Box title="Top CTV theo hoa hồng (8 gần nhất)">
+						<div className="space-y-2 text-sm">
+							{collabList.length === 0 ? (
+								<div className="text-muted-foreground">Chưa có dữ liệu</div>
+							) : (
+								collabList.map(item => (
+									<div key={item.ref} className="flex items-center justify-between">
+										<div>Mã ref: <span className="font-medium">{item.ref}</span></div>
+										<div className="font-semibold">{new Intl.NumberFormat('vi-VN').format(item.total)} đ</div>
+									</div>
+								))
+							)}
 						</div>
 					</Box>
 				</div>

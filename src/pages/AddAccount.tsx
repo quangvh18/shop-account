@@ -9,6 +9,7 @@ import { Select } from "@/components/ui/select";
 import { ArrowLeft, Save } from "lucide-react";
 import { useAccounts } from "@/context/AccountContext";
 import { CreateAccountData } from "@/types/account";
+import { calculateCollaboratorCommissionPct } from "@/lib/utils";
 import { toast } from "@/hooks/use-toast";
 
 const AddAccount = () => {
@@ -37,6 +38,7 @@ const AddAccount = () => {
       twofa: "",
     },
     status: 'active' as const,
+    collaboratorRef: "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -81,7 +83,19 @@ const AddAccount = () => {
         return;
       }
 
-      await addAccount(formData);
+      // Tính hoa hồng theo LỢI NHUẬN nếu có mã ref
+      const profit = Math.max(0, (formData.revenue || 0) - (formData.cost || 0));
+      const commissionPct = formData.collaboratorRef ? calculateCollaboratorCommissionPct(profit) : 0;
+      const commission = Math.round(profit * commissionPct);
+
+      await addAccount({
+        ...formData,
+        // lưu thêm nếu có ref
+        // @ts-ignore: backend map
+        collaboratorCommissionPct: commissionPct,
+        // @ts-ignore
+        collaboratorCommission: commission,
+      } as any);
       
       toast({
         title: "Thành công",
@@ -160,6 +174,42 @@ const AddAccount = () => {
             </CardContent>
           </Card>
 
+          {/* Cộng tác viên (Affiliate) */}
+          <Card>
+            <CardHeader>
+              <CardTitle>Cộng tác viên</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="collabRef">Mã mời CTV</Label>
+                  <Input
+                    id="collabRef"
+                    value={formData.collaboratorRef}
+                    onChange={(e) => setFormData(prev => ({ ...prev, collaboratorRef: e.target.value }))}
+                    placeholder="Nhập ref nếu có"
+                  />
+                </div>
+                <div className="flex items-end">
+                  <div className="text-sm text-muted-foreground">
+                    {formData.collaboratorRef ? (
+                      <>
+                        <div>
+                          Hoa hồng dự kiến: {(() => { const p = Math.max(0, (formData.revenue || 0) - (formData.cost || 0)); return Math.round(p * calculateCollaboratorCommissionPct(p)).toLocaleString('vi-VN'); })()} đ
+                        </div>
+                        <div>
+                          Tỷ lệ: {(() => { const p = Math.max(0, (formData.revenue || 0) - (formData.cost || 0)); return (calculateCollaboratorCommissionPct(p) * 100).toFixed(0); })()}%
+                        </div>
+                      </>
+                    ) : (
+                      <div>Nhập mã mời để tính hoa hồng</div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
           {/* Thông tin tài khoản */}
           <Card>
             <CardHeader>
@@ -217,6 +267,15 @@ const AddAccount = () => {
                     value={formData.revenue}
                     onChange={(e) => setFormData(prev => ({ ...prev, revenue: Number(e.target.value) }))}
                     placeholder="0"
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="collabRef">Mã mời CTV</Label>
+                  <Input
+                    id="collabRef"
+                    value={formData.collaboratorRef}
+                    onChange={(e) => setFormData(prev => ({ ...prev, collaboratorRef: e.target.value }))}
+                    placeholder="Nhập ref nếu có"
                   />
                 </div>
                 <div>

@@ -34,6 +34,7 @@ import CollaboratorInvite from "./pages/CollaboratorInvite";
 import CollaboratorLayout from "./pages/CollaboratorLayout";
 import RequireCollaborator from "@/components/RequireCollaborator";
 import { useEffect } from "react";
+import AdminCollaborators from "./pages/AdminCollaborators";
 import { useLocation } from "react-router-dom";
 
 const ScrollToTop = () => {
@@ -87,6 +88,7 @@ const App = () => (
                 <Route path="accounts" element={<AdminAccounts />} />
                 <Route path="accounts/add" element={<AddAccount />} />
                 <Route path="accounts/edit/:id" element={<EditAccount />} />
+                <Route path="collaborators" element={<AdminCollaborators />} />
                 <Route path="password" element={<AdminChangePassword />} />
               </Route>
               <Route path="*" element={<NotFound />} />

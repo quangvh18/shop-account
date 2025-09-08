@@ -13,6 +13,7 @@ const CollaboratorInvite = () => {
   const [saving, setSaving] = useState(false);
   const [loadingRef, setLoadingRef] = useState(true);
   const [copied, setCopied] = useState(false);
+  const [commissionTotal, setCommissionTotal] = useState<number | null>(null);
 
   useEffect(() => {
     if (sessionLoading || !user) return;
@@ -28,6 +29,23 @@ const CollaboratorInvite = () => {
       setLoadingRef(false);
     })();
   }, [sessionLoading, user]);
+
+  // Fetch commission total when we have ref
+  useEffect(() => {
+    const fetchCommission = async () => {
+      if (!ref) return;
+      try {
+        const { data, error } = await supabase
+          .from('accounts')
+          .select('collaborator_commission')
+          .eq('collaborator_ref', ref);
+        if (error) return;
+        const total = (data || []).reduce((sum: number, row: any) => sum + (Number(row.collaborator_commission) || 0), 0);
+        setCommissionTotal(total);
+      } catch {}
+    };
+    fetchCommission();
+  }, [ref]);
 
   const handleCreate = async () => {
     setError("");
@@ -92,6 +110,13 @@ const CollaboratorInvite = () => {
                 </Button>
               </div>
               {copied ? <div className="text-xs text-emerald-600">Đã copy vào clipboard</div> : null}
+              <div className="rounded-lg border p-3 bg-muted/30">
+                <div className="text-sm text-muted-foreground">Hoa hồng đã tích lũy</div>
+                <div className="text-xl font-semibold">{commissionTotal === null ? 'Đang tải…' : commissionTotal.toLocaleString('vi-VN') + ' đ'}</div>
+              </div>
+              <div className="rounded-lg border p-3 bg-amber-50 text-amber-800">
+                <div className="text-sm">Để nhận tiền hoa hồng, vui lòng liên hệ Zalo admin: <span className="font-semibold">0344396798</span>.</div>
+              </div>
             </div>
           ) : (
             <div className="space-y-4">

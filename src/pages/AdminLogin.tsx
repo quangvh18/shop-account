@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/AuthContext";
@@ -10,7 +10,20 @@ const AdminLogin = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
-	const { signInWithPassword } = useAuth();
+	const { signInWithPassword, user, isAdmin } = useAuth();
+
+	// Nếu đã đăng nhập, tự động chuyển đến khu vực tương ứng
+	useEffect(() => {
+		if (!user) return;
+		const from: string | undefined = location.state?.from;
+		if (isAdmin) {
+			const target = from && from.startsWith("/admin") ? from : "/admin";
+			navigate(target, { replace: true });
+		} else {
+			const target = from && from.startsWith("/collaborator") ? from : "/collaborator";
+			navigate(target, { replace: true });
+		}
+	}, [user, isAdmin]);
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
@@ -29,9 +42,9 @@ const AdminLogin = () => {
 		const adminEmailsRaw = (import.meta as any).env?.VITE_ADMIN_EMAILS as string | undefined;
 		const adminEmails = adminEmailsRaw ? adminEmailsRaw.split(",").map((e: string) => e.trim().toLowerCase()) : [];
 		const userEmail = (userData.user?.email || "").toLowerCase();
-		const isAdmin = adminEmails.length > 0 && adminEmails.includes(userEmail);
+		const isAdminEmail = adminEmails.length > 0 && adminEmails.includes(userEmail);
 		const from: string | undefined = location.state?.from;
-		if (isAdmin) {
+		if (isAdminEmail) {
 			const target = from && from.startsWith("/admin") ? from : "/admin";
 			navigate(target, { replace: true });
 			return;

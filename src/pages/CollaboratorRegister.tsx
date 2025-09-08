@@ -12,6 +12,7 @@ const CollaboratorRegister = () => {
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [phone, setPhone] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -27,6 +28,10 @@ const CollaboratorRegister = () => {
     }
     if (!/^\S+@\S+\.\S+$/.test(email)) {
       setError("Email không hợp lệ.");
+      return;
+    }
+    if (!displayName.trim()) {
+      setError("Vui lòng nhập Display name.");
       return;
     }
     if (!/^\d{9,11}$/.test(phone.trim())) {
@@ -50,10 +55,13 @@ const CollaboratorRegister = () => {
       setError("Không thể đăng ký. Vui lòng thử lại sau.");
       return;
     }
-    // Lưu phone vào user metadata (nếu đã có session)
+    // Lưu display name và phone vào user metadata (nếu đã có session), nếu chưa thì tạm lưu localStorage
     const { data: userData } = await supabase.auth.getUser();
     if (userData.user) {
-      await supabase.auth.updateUser({ data: { phone } });
+      await supabase.auth.updateUser({ data: { phone, name: displayName } });
+    } else {
+      localStorage.setItem('pendingName', displayName);
+      localStorage.setItem('pendingPhone', phone);
     }
     setLoading(false);
     setMessage("Đăng ký thành công. Vui lòng kiểm tra email để xác nhận tài khoản, sau đó đăng nhập.");
@@ -73,6 +81,10 @@ const CollaboratorRegister = () => {
               <div className="space-y-2">
                 <label className="text-sm font-medium">Email</label>
                 <input className="w-full h-10 border rounded-md px-3 input-focus" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="email@domain.com" />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Display name</label>
+                <input className="w-full h-10 border rounded-md px-3 input-focus" value={displayName} onChange={(e)=>setDisplayName(e.target.value)} placeholder="Tên hiển thị" />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium">Số điện thoại</label>
