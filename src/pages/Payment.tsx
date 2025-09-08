@@ -59,7 +59,13 @@ const Payment = () => {
           hour: '2-digit',
           minute: '2-digit',
           second: '2-digit'
-        })
+        }),
+        ...(collab ? {
+          collaboratorRef: collab.ref,
+          collaboratorName: collab.display_name,
+          collaboratorEmail: collab.email,
+          collaboratorPhone: collab.phone,
+        } : {})
       };
 
       // Send notification to Telegram only (per request)
@@ -173,13 +179,6 @@ const Payment = () => {
           <aside className="rounded-lg border p-4">
             <div className="text-sm text-muted-foreground">Mã đơn hàng</div>
             <div className="text-2xl font-extrabold tracking-widest">{orderId}</div>
-            {collab ? (
-              <div className="mt-4 rounded-md border p-3 bg-muted/30">
-                <div className="text-xs text-muted-foreground">Cộng tác viên</div>
-                <div className="text-sm font-medium">{collab.display_name}</div>
-                <div className="text-xs">{collab.email} • {collab.phone}</div>
-              </div>
-            ) : null}
             <div className="mt-4">Tổng tiền phải thanh toán</div>
             <div className="text-2xl font-extrabold text-primary">{currency(total)}</div>
           </aside>

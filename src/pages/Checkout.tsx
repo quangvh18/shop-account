@@ -97,13 +97,6 @@ const Checkout = () => {
         <Card className="shadow-soft card-hover">
           <CardContent className="p-4 sm:p-6">
             <h1 className="text-lg sm:text-xl font-bold mb-4 gradient-text">Tóm tắt đơn hàng</h1>
-            {collab ? (
-              <div className="mb-4 rounded-lg border p-3 bg-emerald-50 text-emerald-800">
-                <div className="text-sm">Đơn hàng này đến từ cộng tác viên:</div>
-                <div className="font-semibold">{collab.display_name}</div>
-                <div className="text-xs">Email: {collab.email} • Phone: {collab.phone}</div>
-              </div>
-            ) : null}
             
             {/* Order Items */}
             <div className="space-y-3 mb-6">

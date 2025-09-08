@@ -18,6 +18,11 @@ export interface OrderData {
   accountPassword?: string;
   accountTwoFA?: string;
   timestamp: string;
+  // Optional collaborator info
+  collaboratorRef?: string;
+  collaboratorName?: string;
+  collaboratorEmail?: string;
+  collaboratorPhone?: string;
 }
 
 export interface NotificationConfig {
@@ -42,6 +47,14 @@ class NotificationService {
     message += `👤 Khách hàng: *${customerName}*\n`;
     message += `📱 Zalo: *${customerZalo}*\n`;
     message += `🕐 Thời gian: *${timestamp}*\n\n`;
+    if (orderData.collaboratorRef) {
+      message += `🤝 *CỘNG TÁC VIÊN GIỚI THIỆU*\n`;
+      message += `   Mã ref: ${orderData.collaboratorRef}\n`;
+      if (orderData.collaboratorName) message += `   Tên: ${orderData.collaboratorName}\n`;
+      if (orderData.collaboratorEmail) message += `   Email: ${orderData.collaboratorEmail}\n`;
+      if (orderData.collaboratorPhone) message += `   SĐT: ${orderData.collaboratorPhone}\n`;
+      message += `\n`;
+    }
     
     message += `📦 *CHI TIẾT ĐƠN HÀNG:*\n`;
     items.forEach((item, index) => {
