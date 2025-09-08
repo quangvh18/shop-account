@@ -22,6 +22,8 @@ const Header = () => {
     }
   };
 
+  const displayName = (user as any)?.user_metadata?.name || (user?.email?.split("@")[0] || "Tài khoản");
+
   return (
     <header className="sticky top-0 z-40 glass shadow-soft">
       {/* Top banner - hidden on mobile */}
@@ -105,17 +107,8 @@ const Header = () => {
             </div>
           ) : (
             <div className="hidden md:flex items-center gap-2">
-              {isAdmin ? (
-                <Button variant="ghost" onClick={() => navigate('/admin')}>
-                  Khu vực admin
-                </Button>
-              ) : (
-                <Button variant="ghost" onClick={() => navigate('/collaborator')}>
-                  Khu vực cộng tác viên
-                </Button>
-              )}
-              <Button variant="ghost" onClick={() => navigate('/admin/password')}>
-                {user.email || 'Tài khoản'}
+              <Button variant="ghost" onClick={() => navigate('/admin')}>
+                {displayName}
               </Button>
               <Button
                 variant="outline"
@@ -165,29 +158,14 @@ const Header = () => {
                       Sản phẩm
                     </Link>
                   </Button>
-                  <Button variant="ghost" className="w-full justify-start hover:bg-muted/50" asChild>
-                    <Link to="/recruitment" onClick={() => setIsMobileMenuOpen(false)}>
-                      <BriefcaseBusiness className="h-4 w-4 mr-2" />
-                      Tuyển dụng
-                    </Link>
-                  </Button>
                   {!user ? (
                     <Button variant="ghost" className="w-full justify-start hover:bg-muted/50" onClick={() => { setIsMobileMenuOpen(false); navigate('/admin/login'); }}>
                       Đăng nhập
                     </Button>
                   ) : (
                     <>
-                      {isAdmin ? (
-                        <Button variant="ghost" className="w-full justify-start hover:bg-muted/50" onClick={() => { setIsMobileMenuOpen(false); navigate('/admin'); }}>
-                          Khu vực admin
-                        </Button>
-                      ) : (
-                        <Button variant="ghost" className="w-full justify-start hover:bg-muted/50" onClick={() => { setIsMobileMenuOpen(false); navigate('/collaborator'); }}>
-                          Khu vực cộng tác viên
-                        </Button>
-                      )}
-                      <Button variant="ghost" className="w-full justify-start hover:bg-muted/50" onClick={() => { setIsMobileMenuOpen(false); navigate('/admin/password'); }}>
-                        {user.email || 'Tài khoản'}
+                      <Button variant="ghost" className="w-full justify-start hover:bg-muted/50" onClick={() => { setIsMobileMenuOpen(false); navigate('/admin'); }}>
+                        {displayName}
                       </Button>
                       <Button variant="ghost" className="w-full justify-start hover:bg-muted/50" onClick={async () => { setIsMobileMenuOpen(false); await signOut(); navigate('/', { replace: true }); }}>
                         Đăng xuất

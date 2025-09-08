@@ -31,14 +31,8 @@ const AdminLogin = () => {
 		const userEmail = (userData.user?.email || "").toLowerCase();
 		const isAdmin = adminEmails.length > 0 && adminEmails.includes(userEmail);
 		const from: string | undefined = location.state?.from;
-		if (isAdmin) {
-			// Chỉ cho phép quay lại các route trong /admin
-			const target = from && from.startsWith("/admin") ? from : "/admin";
-			navigate(target, { replace: true });
-			return;
-		}
-		// CTV: không quay lại /admin để tránh vòng lặp
-		const target = from && from.startsWith("/collaborator") ? from : "/collaborator";
+		// Chỉ cho phép quay lại các route trong /admin, mặc định vào /admin
+		const target = from && from.startsWith("/admin") ? from : "/admin";
 		navigate(target, { replace: true });
 	};
 
