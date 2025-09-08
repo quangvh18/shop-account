@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
 import { useState } from "react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { useAuth } from "@/context/AuthContext";
 
 const Header = () => {
   const { items } = useCart();
@@ -12,6 +13,7 @@ const Header = () => {
   const [q, setQ] = useState("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const { user, isAdmin, signOut } = useAuth();
 
   const handleSearch = () => {
     if (q.trim()) {
@@ -38,7 +40,7 @@ const Header = () => {
               Tuyển dụng
             </span>
           </div>
-          <div className="opacity-90">Kiếm tiền trên Shop Premium</div>
+          <div className="opacity-90 cursor-pointer hover:opacity-100" onClick={()=>navigate('/collaborator/register')}>Kiếm tiền trên Shop Premium</div>
         </div>
       </div>
 
@@ -96,6 +98,34 @@ const Header = () => {
             </Link>
           </Button>
 
+          {/* Auth (desktop) moved to the far right */}
+          {!user ? (
+            <div className="hidden md:flex items-center gap-2">
+              <Button variant="outline" onClick={() => navigate('/admin/login')}>Đăng nhập</Button>
+            </div>
+          ) : (
+            <div className="hidden md:flex items-center gap-2">
+              {isAdmin ? (
+                <Button variant="ghost" onClick={() => navigate('/admin')}>
+                  Khu vực admin
+                </Button>
+              ) : (
+                <Button variant="ghost" onClick={() => navigate('/collaborator')}>
+                  Khu vực cộng tác viên
+                </Button>
+              )}
+              <Button variant="ghost" onClick={() => navigate('/admin/password')}>
+                {user.email || 'Tài khoản'}
+              </Button>
+              <Button
+                variant="outline"
+                onClick={async () => { await signOut(); navigate('/', { replace: true }); }}
+              >
+                Đăng xuất
+              </Button>
+            </div>
+          )}
+
           {/* Mobile menu */}
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
@@ -103,7 +133,7 @@ const Header = () => {
                 <Menu className="h-4 w-4" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px] glass">
+            <SheetContent side="right" className="w-[300px] sm:w-[400px] glass" onOpenAutoFocus={(e)=>e.preventDefault()}>
               <SheetHeader>
                 <SheetTitle className="gradient-text">Menu</SheetTitle>
               </SheetHeader>
@@ -119,6 +149,7 @@ const Header = () => {
                         if (e.key === "Enter") handleSearch();
                       }}
                       className="input-focus"
+                      autoFocus={false}
                     />
                     <Button size="icon" onClick={handleSearch} className="btn-hero">
                       <Search className="h-4 w-4" />
@@ -140,6 +171,29 @@ const Header = () => {
                       Tuyển dụng
                     </Link>
                   </Button>
+                  {!user ? (
+                    <Button variant="ghost" className="w-full justify-start hover:bg-muted/50" onClick={() => { setIsMobileMenuOpen(false); navigate('/admin/login'); }}>
+                      Đăng nhập
+                    </Button>
+                  ) : (
+                    <>
+                      {isAdmin ? (
+                        <Button variant="ghost" className="w-full justify-start hover:bg-muted/50" onClick={() => { setIsMobileMenuOpen(false); navigate('/admin'); }}>
+                          Khu vực admin
+                        </Button>
+                      ) : (
+                        <Button variant="ghost" className="w-full justify-start hover:bg-muted/50" onClick={() => { setIsMobileMenuOpen(false); navigate('/collaborator'); }}>
+                          Khu vực cộng tác viên
+                        </Button>
+                      )}
+                      <Button variant="ghost" className="w-full justify-start hover:bg-muted/50" onClick={() => { setIsMobileMenuOpen(false); navigate('/admin/password'); }}>
+                        {user.email || 'Tài khoản'}
+                      </Button>
+                      <Button variant="ghost" className="w-full justify-start hover:bg-muted/50" onClick={async () => { setIsMobileMenuOpen(false); await signOut(); navigate('/', { replace: true }); }}>
+                        Đăng xuất
+                      </Button>
+                    </>
+                  )}
                 </div>
 
                 {/* Mobile top banner info */}

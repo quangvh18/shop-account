@@ -1,8 +1,11 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { LayoutDashboard, Users2, BarChart3, Settings } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
 
 const AdminLayout = () => {
 	const { pathname } = useLocation();
+	const navigate = useNavigate();
+	const { signOut } = useAuth();
 	const isActive = (to: string) => pathname === to;
 
 	const NavItem = ({ to, icon: Icon, label }: { to: string; icon: any; label: string }) => (
@@ -31,15 +34,18 @@ const AdminLayout = () => {
 				<nav className="space-y-1">
 					<NavItem to="/admin" icon={LayoutDashboard} label="Tổng quan" />
 					<NavItem to="/admin/accounts" icon={Users2} label="Quản lý tài khoản" />
-					<div className="opacity-60 cursor-not-allowed">
-						<NavItem to="/admin/stats" icon={BarChart3} label="Thống kê" />
-					</div>
-					<div className="opacity-60 cursor-not-allowed">
-						<NavItem to="/admin/settings" icon={Settings} label="Cài đặt" />
-					</div>
 				</nav>
-				<div className="mt-6">
+				<div className="mt-6 flex items-center justify-between">
 					<Link to="/" className="text-xs text-muted-foreground hover:text-foreground">← Quay về trang chủ</Link>
+					<button
+						onClick={async () => {
+							await signOut();
+							navigate("/admin/login", { replace: true });
+						}}
+						className="text-xs text-muted-foreground hover:text-foreground"
+					>
+						Đăng xuất
+					</button>
 				</div>
 			</aside>
 

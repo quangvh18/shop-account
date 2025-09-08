@@ -1,10 +1,18 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 
 interface FloatingZaloProps {
 	zaloUrl: string;
 }
 
 const FloatingZalo: React.FC<FloatingZaloProps> = ({ zaloUrl }) => {
+	const location = useLocation();
+	
+	// Hide on admin pages
+	if (location.pathname.startsWith('/admin')) {
+		return null;
+	}
+	
 	return (
 		<a
 			href={zaloUrl}

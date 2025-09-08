@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useAccounts } from "@/context/AccountContext";
+import dailyNotificationService from "@/lib/dailyNotification";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 
 const StatCard = ({ title, value, tone = "default", helper }: { title: string; value: string; tone?: "default" | "success" | "warning" | "danger"; helper?: string }) => {
 	const toneClasses = {
@@ -27,33 +30,163 @@ const Box = ({ title, children, right }: { title: string; children: React.ReactN
 );
 
 const AdminDashboard: React.FC = () => {
+	const { accounts, getExpiringAccounts } = useAccounts();
+
+	// Start daily notification service
+	useEffect(() => {
+		const getExpiringAccountsCallback = () => {
+			return getExpiringAccounts(2).map(account => ({
+				id: account.id,
+				contactInfo: account.contactInfo,
+				accountType: account.accountType,
+				endDate: account.endDate,
+				daysLeft: Math.ceil((new Date(account.endDate).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24))
+			}));
+		};
+
+		// Start daily check
+		dailyNotificationService.startDailyCheck(getExpiringAccountsCallback);
+
+		// Cleanup on unmount
+		return () => {
+			dailyNotificationService.stopDailyCheck();
+		};
+	}, [accounts]); // Changed dependency to accounts instead of getExpiringAccounts
+
+	// Calculate stats
+	const totalAccounts = accounts.length;
+	const activeAccounts = accounts.filter(acc => acc.status === 'active').length;
+	const expiredAccounts = accounts.filter(acc => acc.status === 'expired').length;
+	const totalRevenue = accounts.reduce((sum, acc) => sum + acc.revenue, 0);
+	const totalProfit = accounts.reduce((sum, acc) => sum + acc.profit, 0);
+
+	// Time-based stats
+	const now = new Date();
+	const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+	const weekStart = new Date(today);
+	weekStart.setDate(today.getDate() - today.getDay());
+	const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+
+	const todayAccounts = accounts.filter(acc => {
+		const createdDate = new Date(acc.createdAt);
+		return createdDate >= today;
+	});
+
+	const weekAccounts = accounts.filter(acc => {
+		const createdDate = new Date(acc.createdAt);
+		return createdDate >= weekStart;
+	});
+
+	const monthAccounts = accounts.filter(acc => {
+		const createdDate = new Date(acc.createdAt);
+		return createdDate >= monthStart;
+	});
+
+	const todayStats = {
+		orders: todayAccounts.length,
+		revenue: todayAccounts.reduce((sum, acc) => sum + acc.revenue, 0),
+		profit: todayAccounts.reduce((sum, acc) => sum + acc.profit, 0)
+	};
+
+	const weekStats = {
+		orders: weekAccounts.length,
+		revenue: weekAccounts.reduce((sum, acc) => sum + acc.revenue, 0),
+		profit: weekAccounts.reduce((sum, acc) => sum + acc.profit, 0)
+	};
+
+	const monthStats = {
+		orders: monthAccounts.length,
+		revenue: monthAccounts.reduce((sum, acc) => sum + acc.revenue, 0),
+		profit: monthAccounts.reduce((sum, acc) => sum + acc.profit, 0)
+	};
+
+	const formatCurrency = (amount: number) => {
+		return new Intl.NumberFormat("vi-VN", { 
+			style: "currency", 
+			currency: "VND" 
+		}).format(amount);
+	};
+
+	// Prepare chart data for last 7 days
+	const getChartData = () => {
+		const data = [];
+		for (let i = 6; i >= 0; i--) {
+			const date = new Date();
+			date.setDate(date.getDate() - i);
+			const dayStart = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+			const dayEnd = new Date(dayStart);
+			dayEnd.setDate(dayEnd.getDate() + 1);
+
+			const dayAccounts = accounts.filter(acc => {
+				const createdDate = new Date(acc.createdAt);
+				return createdDate >= dayStart && createdDate < dayEnd;
+			});
+
+			data.push({
+				date: date.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' }),
+				orders: dayAccounts.length,
+				revenue: dayAccounts.reduce((sum, acc) => sum + acc.revenue, 0),
+				profit: dayAccounts.reduce((sum, acc) => sum + acc.profit, 0)
+			});
+		}
+		return data;
+	};
+
+	const chartData = getChartData();
+
 	return (
 		<div className="space-y-6">
 			<h1 className="text-2xl font-bold tracking-tight">Tổng quan</h1>
 			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-				<StatCard title="Tổng số tài khoản" value="150" />
-				<StatCard title="Đang hoạt động" value="98" tone="success" />
-				<StatCard title="Sắp hết hạn" value="12" helper="≤ 7 ngày" tone="warning" />
-				<StatCard title="Đã hết hạn" value="40" tone="danger" />
-				<StatCard title="Tổng doanh thu" value="25.8M VNĐ" />
+				<StatCard title="Tổng số tài khoản" value={totalAccounts.toString()} />
+				<StatCard title="Đang hoạt động" value={activeAccounts.toString()} tone="success" />
+				<StatCard title="Đã hết hạn" value={expiredAccounts.toString()} tone="danger" />
+				<StatCard title="Tổng doanh thu" value={formatCurrency(totalRevenue)} />
+				<StatCard title="Tổng lợi nhuận" value={formatCurrency(totalProfit)} />
 			</div>
 
 			<div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-				<Box title="Thống kê theo thời gian">
-					<div className="h-[280px] rounded-lg bg-muted/30 flex items-center justify-center text-muted-foreground text-sm">Biểu đồ (sẽ thêm)</div>
+				<Box title="Thống kê 7 ngày qua">
+					<div className="h-[280px]">
+						<ResponsiveContainer width="100%" height="100%">
+							<LineChart data={chartData}>
+								<CartesianGrid strokeDasharray="3 3" />
+								<XAxis dataKey="date" />
+								<YAxis />
+								<Tooltip 
+									formatter={(value, name) => [
+										name === 'revenue' || name === 'profit' ? formatCurrency(Number(value)) : value,
+										name === 'orders' ? 'Đơn hàng' : name === 'revenue' ? 'Doanh thu' : 'Lợi nhuận'
+									]}
+								/>
+								<Line type="monotone" dataKey="orders" stroke="#8884d8" strokeWidth={2} />
+								<Line type="monotone" dataKey="revenue" stroke="#82ca9d" strokeWidth={2} />
+								<Line type="monotone" dataKey="profit" stroke="#ffc658" strokeWidth={2} />
+							</LineChart>
+						</ResponsiveContainer>
+					</div>
 				</Box>
 				<div className="space-y-4">
 					<Box title="Hôm nay">
-						<div className="text-xl font-semibold">3 tài khoản</div>
-						<div className="text-sm text-muted-foreground">650K VNĐ doanh thu</div>
+						<div className="space-y-2">
+							<div className="text-xl font-semibold">{todayStats.orders} tài khoản</div>
+							<div className="text-sm text-muted-foreground">Doanh thu: {formatCurrency(todayStats.revenue)}</div>
+							<div className="text-sm text-muted-foreground">Lợi nhuận: {formatCurrency(todayStats.profit)}</div>
+						</div>
 					</Box>
 					<Box title="Tuần này">
-						<div className="text-xl font-semibold">18 tài khoản</div>
-						<div className="text-sm text-muted-foreground">3.2M VNĐ doanh thu</div>
+						<div className="space-y-2">
+							<div className="text-xl font-semibold">{weekStats.orders} tài khoản</div>
+							<div className="text-sm text-muted-foreground">Doanh thu: {formatCurrency(weekStats.revenue)}</div>
+							<div className="text-sm text-muted-foreground">Lợi nhuận: {formatCurrency(weekStats.profit)}</div>
+						</div>
 					</Box>
 					<Box title="Tháng này">
-						<div className="text-xl font-semibold">45 tài khoản</div>
-						<div className="text-sm text-muted-foreground">8.8M VNĐ doanh thu</div>
+						<div className="space-y-2">
+							<div className="text-xl font-semibold">{monthStats.orders} tài khoản</div>
+							<div className="text-sm text-muted-foreground">Doanh thu: {formatCurrency(monthStats.revenue)}</div>
+							<div className="text-sm text-muted-foreground">Lợi nhuận: {formatCurrency(monthStats.profit)}</div>
+						</div>
 					</Box>
 				</div>
 			</div>

@@ -1,30 +1,43 @@
-export type AccountType =
-	| "ChatGPT Plus"
-	| "Claude Pro"
-	| "Super Grok"
-	| "CapCut Pro"
-	| "Duolingo Super"
-	| "Canva Pro"
-	| "Kling AI"
-	| "Perplexity Pro"
-	| "Copilot & Microsoft 365"
-	| "JetBrains All Products Pack"
-	| "Spotify Premium"
-	| "Netflix Premium"
-	| "YouTube Premium";
+export interface Account {
+  id: number;
+  uuid: string; // Lưu UUID gốc từ DB
+  contactInfo: {
+    name: string;
+    contact: string; // Zalo/SĐT/Facebook/Telegram...
+  };
+  accountType: string;
+  startDate: string; // ISO date string
+  endDate: string; // ISO date string
+  cost: number; // Chi phí
+  revenue: number; // Tổng thu
+  profit: number; // Lợi nhuận (revenue - cost)
+  customerAccount: {
+    email: string;
+    password: string;
+    twofa?: string;
+  };
+  shopAccount: {
+    email: string;
+    password: string;
+    twofa?: string;
+  };
+  status: 'active' | 'expired';
+  createdAt: string;
+  updatedAt: string;
+}
 
-export const SUPPORTED_ACCOUNT_TYPES: AccountType[] = [
-	"ChatGPT Plus",
-	"Claude Pro",
-	"Super Grok",
-	"CapCut Pro",
-	"Duolingo Super",
-	"Canva Pro",
-	"Kling AI",
-	"Perplexity Pro",
-	"Copilot & Microsoft 365",
-	"JetBrains All Products Pack",
-	"Spotify Premium",
-	"Netflix Premium",
-	"YouTube Premium",
-]; 
+export interface CreateAccountData {
+  contactInfo: Account['contactInfo'];
+  accountType: string;
+  startDate: string;
+  endDate: string;
+  cost: number;
+  revenue: number;
+  customerAccount: Account['customerAccount'];
+  shopAccount: Account['shopAccount'];
+  status: Account['status'];
+}
+
+export interface UpdateAccountData extends Partial<CreateAccountData> {
+  id: number;
+}

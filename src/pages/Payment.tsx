@@ -9,13 +9,21 @@ import { toast } from "@/hooks/use-toast";
 import { CheckCircle, Loader2 } from "lucide-react";
 import qrImage from "@/assets/qrcode.jpg";
 import notificationService from "@/lib/notification";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getStoredRef, fetchCollaboratorByRef, type Collaborator } from "@/lib/referral";
 
 const Payment = () => {
   const { total, clear, detailed } = useCart();
   const navigate = useNavigate();
   const orderId = Math.random().toString(36).slice(2, 8).toUpperCase();
   const [isProcessing, setIsProcessing] = useState(false);
+  const [collab, setCollab] = useState<Collaborator | null>(null);
+
+  useEffect(() => {
+    const ref = getStoredRef();
+    if (!ref) return;
+    fetchCollaboratorByRef(ref).then(setCollab).catch(() => {});
+  }, []);
 
   const onDone = async () => {
     setIsProcessing(true);
@@ -165,6 +173,13 @@ const Payment = () => {
           <aside className="rounded-lg border p-4">
             <div className="text-sm text-muted-foreground">Mã đơn hàng</div>
             <div className="text-2xl font-extrabold tracking-widest">{orderId}</div>
+            {collab ? (
+              <div className="mt-4 rounded-md border p-3 bg-muted/30">
+                <div className="text-xs text-muted-foreground">Cộng tác viên</div>
+                <div className="text-sm font-medium">{collab.display_name}</div>
+                <div className="text-xs">{collab.email} • {collab.phone}</div>
+              </div>
+            ) : null}
             <div className="mt-4">Tổng tiền phải thanh toán</div>
             <div className="text-2xl font-extrabold text-primary">{currency(total)}</div>
           </aside>
