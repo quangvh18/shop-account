@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { Account, CreateAccountData, UpdateAccountData } from "@/types/account";
 import { supabase } from "@/lib/supabase";
+import { calculateCollaboratorCommissionPct } from "@/lib/utils";
 
 type AccountContextType = {
   accounts: Account[];
@@ -113,16 +114,35 @@ export const AccountProvider = ({ children }: { children: React.ReactNode }) => 
       throw new Error("Account not found");
     }
     
+    // Tính toán lại hoa hồng nếu có thay đổi về revenue, cost hoặc collaboratorRef
+    const newRevenue = data.revenue ?? existing.revenue ?? 0;
+    const newCost = data.cost ?? existing.cost ?? 0;
+    const newCollaboratorRef = data.collaboratorRef ?? existing.collaboratorRef;
+    const newProfit = Math.max(0, newRevenue - newCost);
+    
+    let commissionPct = 0;
+    let commission = 0;
+    
+    // Chỉ tính hoa hồng nếu có collaboratorRef và không rỗng
+    if (newCollaboratorRef && newCollaboratorRef.trim() !== '') {
+      commissionPct = calculateCollaboratorCommissionPct(newProfit);
+      commission = Math.round(newProfit * commissionPct);
+    }
+    
     const updatedPayload: any = {
       contactinfo: data.contactInfo ?? existing.contactInfo,
       accounttype: data.accountType ?? existing.accountType,
       startdate: data.startDate ?? existing.startDate,
       enddate: data.endDate ?? existing.endDate,
-      cost: data.cost ?? existing.cost ?? 0,
-      revenue: data.revenue ?? existing.revenue ?? 0,
-      profit: Math.max(0, (data.revenue ?? existing.revenue ?? 0) - (data.cost ?? existing.cost ?? 0)),
+      cost: newCost,
+      revenue: newRevenue,
+      profit: newProfit,
       customeraccount: data.customerAccount ?? existing.customerAccount,
       shopaccount: data.shopAccount ?? existing.shopAccount,
+      // Cập nhật thông tin cộng tác viên
+      ...(data.collaboratorRef !== undefined && { collaborator_ref: data.collaboratorRef }),
+      collaborator_commission_pct: commissionPct,
+      collaborator_commission: commission,
       // Chỉ thêm status nếu cột tồn tại
       ...(data.status && { status: data.status }),
       updatedat: nowIso,
@@ -154,6 +174,9 @@ export const AccountProvider = ({ children }: { children: React.ReactNode }) => 
             profit: updated.profit ?? Math.max(0, (updated.revenue ?? 0) - (updated.cost ?? 0)),
             customerAccount: updated.customerAccount ?? updated.customeraccount,
             shopAccount: updated.shopAccount ?? updated.shopaccount,
+            collaboratorRef: updated.collaboratorRef ?? updated.collaborator_ref,
+            collaboratorCommissionPct: updated.collaboratorCommissionPct ?? updated.collaborator_commission_pct,
+            collaboratorCommission: updated.collaboratorCommission ?? updated.collaborator_commission,
             status: updated.status ?? getAccountStatus((updated.endDate ?? updated.enddate) as string),
             createdAt: updated.createdAt ?? updated.createdat,
             updatedAt: updated.updatedAt ?? updated.updatedat,

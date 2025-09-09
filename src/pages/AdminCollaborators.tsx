@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { Button } from "@/components/ui/button";
+import { useAccounts } from "@/context/AccountContext";
 
 type Collaborator = { ref: string; display_name: string; email: string; phone: string };
 type CollabWithStats = Collaborator & { orders: number; totalCommission: number };
@@ -8,10 +9,10 @@ type CollabWithStats = Collaborator & { orders: number; totalCommission: number 
 const PAGE_SIZE = 20;
 
 const AdminCollaborators = () => {
+  const { accounts } = useAccounts();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string>("");
   const [collabs, setCollabs] = useState<Collaborator[]>([]);
-  const [accounts, setAccounts] = useState<Array<{ collaborator_ref: string | null; collaborator_commission: number | null }>>([]);
   const [q, setQ] = useState("");
   const [page, setPage] = useState(1);
   const [payingRef, setPayingRef] = useState<string | null>(null);
@@ -27,14 +28,11 @@ const AdminCollaborators = () => {
       setLoading(true);
       setError("");
       try {
-        const [{ data: cData, error: cErr }, { data: aData, error: aErr }] = await Promise.all([
-          supabase.from("collaborators").select("ref, display_name, email, phone"),
-          supabase.from("accounts").select("collaborator_ref, collaborator_commission")
-        ]);
+        const { data: cData, error: cErr } = await supabase
+          .from("collaborators")
+          .select("ref, display_name, email, phone");
         if (cErr) throw cErr;
-        if (aErr) throw aErr;
         setCollabs((cData as any) || []);
-        setAccounts((aData as any) || []);
       } catch (e: any) {
         setError("Không tải được dữ liệu cộng tác viên.");
       } finally {
@@ -47,11 +45,11 @@ const AdminCollaborators = () => {
   const rows: CollabWithStats[] = useMemo(() => {
     const refToTotals = new Map<string, { orders: number; total: number }>();
     for (const a of accounts) {
-      if (!a.collaborator_ref) continue;
-      const cur = refToTotals.get(a.collaborator_ref) || { orders: 0, total: 0 };
+      if (!a.collaboratorRef) continue;
+      const cur = refToTotals.get(a.collaboratorRef) || { orders: 0, total: 0 };
       cur.orders += 1;
-      cur.total += Number(a.collaborator_commission || 0);
-      refToTotals.set(a.collaborator_ref, cur);
+      cur.total += Number(a.collaboratorCommission || 0);
+      refToTotals.set(a.collaboratorRef, cur);
     }
     return collabs.map(c => ({
       ...c,
@@ -83,8 +81,8 @@ const AdminCollaborators = () => {
   const currentPayoutAmount = useMemo(() => {
     if (!payingRef) return 0;
     return accounts
-      .filter(a => a.collaborator_ref === payingRef)
-      .reduce((s, a) => s + (Number(a.collaborator_commission || 0)), 0);
+      .filter(a => a.collaboratorRef === payingRef)
+      .reduce((s, a) => s + (Number(a.collaboratorCommission || 0)), 0);
   }, [payingRef, accounts]);
 
   const confirmPayout = async () => {
@@ -104,8 +102,8 @@ const AdminCollaborators = () => {
         .update({ collaborator_commission: 0 })
         .eq('collaborator_ref', payingRef);
       if (error) throw error;
-      // Optimistic update in UI state
-      setAccounts(prev => prev.map(a => a.collaborator_ref === payingRef ? { ...a, collaborator_commission: 0 } : a));
+      // Reload accounts from context to get updated data
+      window.location.reload();
       setShowModal(false);
       setPayingRef(null);
     } catch (e) {
