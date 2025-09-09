@@ -11,21 +11,21 @@ const StatCard = ({ title, value, tone = "default", helper }: { title: string; v
 		danger: "border bg-rose-50",
 	};
 	return (
-		<div className={`p-5 rounded-xl ${toneClasses[tone]}`}> 
-			<div className="text-sm text-muted-foreground">{title}</div>
-			<div className="text-3xl font-bold mt-1 tracking-tight">{value}</div>
-			{helper ? <div className="text-xs text-muted-foreground mt-1">{helper}</div> : null}
+		<div className={`p-3 sm:p-4 lg:p-5 rounded-xl ${toneClasses[tone]}`}> 
+			<div className="text-xs sm:text-sm text-muted-foreground truncate">{title}</div>
+			<div className="text-xl sm:text-2xl lg:text-3xl font-bold mt-1 tracking-tight truncate">{value}</div>
+			{helper ? <div className="text-xs text-muted-foreground mt-1 truncate">{helper}</div> : null}
 		</div>
 	);
 };
 
 const Box = ({ title, children, right }: { title: string; children: React.ReactNode; right?: React.ReactNode }) => (
 	<div className="rounded-xl border bg-white">
-		<div className="flex items-center justify-between p-4 border-b">
-			<div className="font-semibold">{title}</div>
+		<div className="flex items-center justify-between p-3 sm:p-4 border-b">
+			<div className="font-semibold text-sm sm:text-base truncate">{title}</div>
 			{right}
 		</div>
-		<div className="p-4">{children}</div>
+		<div className="p-3 sm:p-4">{children}</div>
 	</div>
 );
 
@@ -150,9 +150,11 @@ const AdminDashboard: React.FC = () => {
 		.slice(0, 8);
 
 	return (
-		<div className="space-y-6">
-			<h1 className="text-2xl font-bold tracking-tight">Tổng quan</h1>
-			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+		<div className="space-y-4 sm:space-y-6 p-4 sm:p-6">
+			<h1 className="text-xl sm:text-2xl font-bold tracking-tight">Tổng quan</h1>
+			
+			{/* Stats Cards - Responsive Grid */}
+			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4">
 				<StatCard title="Tổng số tài khoản" value={totalAccounts.toString()} />
 				<StatCard title="Đang hoạt động" value={activeAccounts.toString()} tone="success" />
 				<StatCard title="Đã hết hạn" value={expiredAccounts.toString()} tone="danger" />
@@ -160,58 +162,74 @@ const AdminDashboard: React.FC = () => {
 				<StatCard title="Tổng lợi nhuận" value={formatCurrency(totalProfit)} />
 			</div>
 
-			<div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-				<Box title="Thống kê 7 ngày qua">
-					<div className="h-[280px]">
-						<ResponsiveContainer width="100%" height="100%">
-							<LineChart data={chartData}>
-								<CartesianGrid strokeDasharray="3 3" />
-								<XAxis dataKey="date" />
-								<YAxis />
-								<Tooltip 
-									formatter={(value, name) => [
-										name === 'revenue' || name === 'profit' ? formatCurrency(Number(value)) : value,
-										name === 'orders' ? 'Đơn hàng' : name === 'revenue' ? 'Doanh thu' : 'Lợi nhuận'
-									]}
-								/>
-								<Line type="monotone" dataKey="orders" stroke="#8884d8" strokeWidth={2} />
-								<Line type="monotone" dataKey="revenue" stroke="#82ca9d" strokeWidth={2} />
-								<Line type="monotone" dataKey="profit" stroke="#ffc658" strokeWidth={2} />
-							</LineChart>
-						</ResponsiveContainer>
+			{/* Main Content - Responsive Layout */}
+			<div className="grid grid-cols-1 xl:grid-cols-3 gap-4 sm:gap-6">
+				{/* Chart Section */}
+				<div className="xl:col-span-1">
+					<Box title="Thống kê 7 ngày qua">
+						<div className="h-[250px] sm:h-[280px]">
+							<ResponsiveContainer width="100%" height="100%">
+								<LineChart data={chartData}>
+									<CartesianGrid strokeDasharray="3 3" />
+									<XAxis 
+										dataKey="date" 
+										tick={{ fontSize: 12 }}
+										interval="preserveStartEnd"
+									/>
+									<YAxis tick={{ fontSize: 12 }} />
+									<Tooltip 
+										formatter={(value, name) => [
+											name === 'revenue' || name === 'profit' ? formatCurrency(Number(value)) : value,
+											name === 'orders' ? 'Đơn hàng' : name === 'revenue' ? 'Doanh thu' : 'Lợi nhuận'
+										]}
+										contentStyle={{ fontSize: '12px' }}
+									/>
+									<Line type="monotone" dataKey="orders" stroke="#8884d8" strokeWidth={2} />
+									<Line type="monotone" dataKey="revenue" stroke="#82ca9d" strokeWidth={2} />
+									<Line type="monotone" dataKey="profit" stroke="#ffc658" strokeWidth={2} />
+								</LineChart>
+							</ResponsiveContainer>
+						</div>
+					</Box>
+				</div>
+				
+				{/* Stats and CTV Section */}
+				<div className="xl:col-span-2 space-y-4">
+					{/* Time-based Stats - Responsive Grid */}
+					<div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+						<Box title="Hôm nay">
+							<div className="space-y-2">
+								<div className="text-lg sm:text-xl font-semibold">{todayStats.orders} tài khoản</div>
+								<div className="text-xs sm:text-sm text-muted-foreground">Doanh thu: {formatCurrency(todayStats.revenue)}</div>
+								<div className="text-xs sm:text-sm text-muted-foreground">Lợi nhuận: {formatCurrency(todayStats.profit)}</div>
+							</div>
+						</Box>
+						<Box title="Tuần này">
+							<div className="space-y-2">
+								<div className="text-lg sm:text-xl font-semibold">{weekStats.orders} tài khoản</div>
+								<div className="text-xs sm:text-sm text-muted-foreground">Doanh thu: {formatCurrency(weekStats.revenue)}</div>
+								<div className="text-xs sm:text-sm text-muted-foreground">Lợi nhuận: {formatCurrency(weekStats.profit)}</div>
+							</div>
+						</Box>
+						<Box title="Tháng này">
+							<div className="space-y-2">
+								<div className="text-lg sm:text-xl font-semibold">{monthStats.orders} tài khoản</div>
+								<div className="text-xs sm:text-sm text-muted-foreground">Doanh thu: {formatCurrency(monthStats.revenue)}</div>
+								<div className="text-xs sm:text-sm text-muted-foreground">Lợi nhuận: {formatCurrency(monthStats.profit)}</div>
+							</div>
+						</Box>
 					</div>
-				</Box>
-				<div className="space-y-4">
-					<Box title="Hôm nay">
-						<div className="space-y-2">
-							<div className="text-xl font-semibold">{todayStats.orders} tài khoản</div>
-							<div className="text-sm text-muted-foreground">Doanh thu: {formatCurrency(todayStats.revenue)}</div>
-							<div className="text-sm text-muted-foreground">Lợi nhuận: {formatCurrency(todayStats.profit)}</div>
-						</div>
-					</Box>
-					<Box title="Tuần này">
-						<div className="space-y-2">
-							<div className="text-xl font-semibold">{weekStats.orders} tài khoản</div>
-							<div className="text-sm text-muted-foreground">Doanh thu: {formatCurrency(weekStats.revenue)}</div>
-							<div className="text-sm text-muted-foreground">Lợi nhuận: {formatCurrency(weekStats.profit)}</div>
-						</div>
-					</Box>
-					<Box title="Tháng này">
-						<div className="space-y-2">
-							<div className="text-xl font-semibold">{monthStats.orders} tài khoản</div>
-							<div className="text-sm text-muted-foreground">Doanh thu: {formatCurrency(monthStats.revenue)}</div>
-							<div className="text-sm text-muted-foreground">Lợi nhuận: {formatCurrency(monthStats.profit)}</div>
-						</div>
-					</Box>
+					
+					{/* CTV Section */}
 					<Box title="Top CTV theo hoa hồng (8 gần nhất)">
-						<div className="space-y-2 text-sm">
+						<div className="space-y-2 text-xs sm:text-sm">
 							{collabList.length === 0 ? (
 								<div className="text-muted-foreground">Chưa có dữ liệu</div>
 							) : (
 								collabList.map(item => (
 									<div key={item.ref} className="flex items-center justify-between">
-										<div>Mã ref: <span className="font-medium">{item.ref}</span></div>
-										<div className="font-semibold">{new Intl.NumberFormat('vi-VN').format(item.total)} đ</div>
+										<div className="truncate">Mã ref: <span className="font-medium">{item.ref}</span></div>
+										<div className="font-semibold text-right">{new Intl.NumberFormat('vi-VN').format(item.total)} đ</div>
 									</div>
 								))
 							)}
