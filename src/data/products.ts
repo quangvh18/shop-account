@@ -1,4 +1,5 @@
 import chatgptImg from "@/assets/chatgpt-update.png";
+import chatgpt6mImg from "@/assets/chatgpt-6m.png";
 import chatgptShareImg from "@/assets/chatgpt-share.png";
 import claudeImg from "@/assets/claude-1m.png";
 import youtubeImg from "@/assets/youtube-1y.png";
@@ -51,6 +52,20 @@ export const products: Product[] = [
     status: "in_stock",
     description:
       "Nâng cấp tài khoản ChatGPT Plus chính chủ trong 1 tháng. Hỗ trợ hướng dẫn chi tiết và bảo hành trong thời gian sử dụng.",
+    category: "AI",
+    accountType: "ChatGPT Plus",
+  },
+  {
+    id: "chatgpt-plus-6m",
+    slug: "chatgpt-plus-6-thang-tai-khoan-chinh-chu",
+    name: "ChatGPT Plus 6 tháng - Đăng ký lần đầu",
+    price: 1750000,
+    originalPrice: 3000000,
+    tags: ["openai", "ai", "chatbot"],
+    image: chatgpt6mImg,
+    status: "in_stock",
+    description:
+      "Nâng cấp tài khoản ChatGPT Plus chính chủ trong 6 tháng. Hỗ trợ hướng dẫn chi tiết và bảo hành trong thời gian sử dụng.",
     category: "AI",
     accountType: "ChatGPT Plus",
   },
