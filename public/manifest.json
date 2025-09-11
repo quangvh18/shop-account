@@ -1,0 +1,29 @@
+{
+  "name": "Shop Premium - Tài khoản số giá rẻ",
+  "short_name": "Shop Premium",
+  "description": "Cửa hàng tài khoản số uy tín #1 Việt Nam. Mua ChatGPT Plus, YouTube Premium, Spotify, Netflix, AI tools giá rẻ.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "vi",
+  "categories": ["shopping", "business"],
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/org.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "form_factor": "wide"
+    }
+  ]
+}

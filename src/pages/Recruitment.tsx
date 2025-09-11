@@ -1,13 +1,29 @@
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
 const Recruitment = () => (
   <>
     <Helmet>
-      <title>Tuyển dụng – Shop Premium</title>
-      <meta name="description" content="Tuyển dụng nhân viên chăm sóc khách hàng Shop Premium." />
-      <link rel="canonical" href="/recruitment" />
+      <title>Tuyển dụng nhân viên CSKH - Shop Premium | Cơ hội việc làm hấp dẫn</title>
+      <meta name="description" content="Tuyển dụng nhân viên chăm sóc khách hàng tại Shop Premium. Lương hấp dẫn, môi trường làm việc năng động. Ứng tuyển ngay!" />
+      <meta name="keywords" content="tuyển dụng, việc làm, nhân viên CSKH, shop premium, cộng tác viên, làm việc part-time" />
+      <meta name="robots" content="index, follow" />
+      <link rel="canonical" href={`${import.meta.env.VITE_PUBLIC_SITE_URL}/recruitment`} />
+      
+      {/* Open Graph */}
+      <meta property="og:title" content="Tuyển dụng nhân viên CSKH - Shop Premium" />
+      <meta property="og:description" content="Tuyển dụng nhân viên chăm sóc khách hàng tại Shop Premium. Lương hấp dẫn, môi trường làm việc năng động." />
+      <meta property="og:type" content="article" />
+      <meta property="og:url" content={`${import.meta.env.VITE_PUBLIC_SITE_URL}/recruitment`} />
+      <meta property="og:image" content={`${import.meta.env.VITE_PUBLIC_SITE_URL}/org.jpg`} />
+      <meta property="og:site_name" content="Shop Premium" />
+      
+      {/* Twitter Cards */}
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:title" content="Tuyển dụng nhân viên CSKH - Shop Premium" />
+      <meta name="twitter:description" content="Tuyển dụng nhân viên chăm sóc khách hàng tại Shop Premium. Lương hấp dẫn, môi trường làm việc năng động." />
     </Helmet>
     <Header />
     <main className="container mx-auto px-4 mt-6 min-h-[60vh]">
@@ -40,6 +56,16 @@ const Recruitment = () => (
         </ul>
         <div className="mt-8 p-4 bg-blue-50 rounded text-base">
           <b>Liên hệ ứng tuyển qua Zalo:</b> <a href="https://zalo.me/0344396798" className="underline text-blue-600" target="_blank" rel="noopener noreferrer">0344.396.798</a>
+        </div>
+        
+        <div className="mt-6 p-4 bg-green-50 rounded text-base">
+          <p className="mb-2"><b>Hoặc đăng ký trực tiếp:</b></p>
+          <Link 
+            to="/collaborator/register" 
+            className="inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors"
+          >
+            Đăng ký làm cộng tác viên
+          </Link>
         </div>
       </div>
     </main>

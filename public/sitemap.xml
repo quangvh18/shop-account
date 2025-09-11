@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://www.shopacc.pro.vn/</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.shopacc.pro.vn/product/chatgpt-plus-1-thang-tai-khoan-chinh-chu</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shopacc.pro.vn/src/assets/chatgpt-update.png</image:loc>
+      <image:title>ChatGPT Plus 1 tháng - TK chính chủ</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shopacc.pro.vn/product/chatgpt-plus-6-thang-tai-khoan-chinh-chu</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shopacc.pro.vn/src/assets/chatgpt-6m.png</image:loc>
+      <image:title>ChatGPT Plus 6 tháng - Đăng ký lần đầu</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shopacc.pro.vn/product/chatgpt-plus-1-thang-tai-khoan-share</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shopacc.pro.vn/src/assets/chatgpt-share.png</image:loc>
+      <image:title>ChatGPT Plus 1 tháng - TK share</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shopacc.pro.vn/product/youtube-premium-1-nam</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shopacc.pro.vn/src/assets/youtube-1y.png</image:loc>
+      <image:title>YouTube Premium 1 năm + Music</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shopacc.pro.vn/product/youtube-premium-6-thang</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shopacc.pro.vn/src/assets/youtube-6m.png</image:loc>
+      <image:title>YouTube Premium 6 tháng + Music</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shopacc.pro.vn/product/duolingo-super-1-nam</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shopacc.pro.vn/src/assets/douligo-1y.png</image:loc>
+      <image:title>Duolingo Super 1 năm - TK chính chủ</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shopacc.pro.vn/product/spotify-premium-3-thang</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shopacc.pro.vn/src/assets/spotify-3m.png</image:loc>
+      <image:title>Spotify Premium 3 tháng - TK chính chủ</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shopacc.pro.vn/product/spotify-premium-6-thang</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shopacc.pro.vn/src/assets/spotify-6m.png</image:loc>
+      <image:title>Spotify Premium 6 tháng - TK chính chủ</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shopacc.pro.vn/product/spotify-premium-1-nam</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shopacc.pro.vn/src/assets/spotify-1y.png</image:loc>
+      <image:title>Spotify Premium 1 năm - TK chính chủ</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shopacc.pro.vn/product/claude-1m</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shopacc.pro.vn/src/assets/claude-1m.png</image:loc>
+      <image:title>Claude Pro 20$ 1 tháng - TK chính chủ</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shopacc.pro.vn/product/capcut-1m</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shopacc.pro.vn/src/assets/capcut-1m.png</image:loc>
+      <image:title>CapCut Pro 1 tháng</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shopacc.pro.vn/product/capcut-1y</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shopacc.pro.vn/src/assets/capcut-1y.png</image:loc>
+      <image:title>CapCut Pro 1 năm</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shopacc.pro.vn/product/netflix-1m</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shopacc.pro.vn/src/assets/netflix-1m.png</image:loc>
+      <image:title>Netflix 1 tháng - TK chính chủ</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shopacc.pro.vn/product/grok-1m</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shopacc.pro.vn/src/assets/grok-1m.png</image:loc>
+      <image:title>SuperGrok 1 tháng - TK chính chủ</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shopacc.pro.vn/product/google-one-2tb-1-thang</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shopacc.pro.vn/src/assets/google-one-2tb-1y.png</image:loc>
+      <image:title>Google One 2TB 1 tháng + Gemini Pro</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shopacc.pro.vn/product/google-one-2tb-1-nam</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shopacc.pro.vn/src/assets/google-one-2tb-1y.png</image:loc>
+      <image:title>Google One 2TB 1 năm + Gemini Pro</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shopacc.pro.vn/product/perplexity-pro-12m</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.shopacc.pro.vn/src/assets/perplexity-pro-12m.png</image:loc>
+      <image:title>Perplexity Pro 12 tháng - TK chính chủ</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.shopacc.pro.vn/search</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.shopacc.pro.vn/recruitment</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.shopacc.pro.vn/contact</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.shopacc.pro.vn/privacy</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.shopacc.pro.vn/terms</loc>
+    <lastmod>2025-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>

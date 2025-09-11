@@ -10,6 +10,7 @@ import { useState } from "react";
 import { useCart } from "@/context/CartContext";
 import { toast } from "@/hooks/use-toast";
 import { CheckCircle } from "lucide-react";
+import InternalLinks from "@/components/seo/InternalLinks";
 
 const Product = () => {
   const { slug } = useParams();
@@ -82,9 +83,88 @@ const handleAdd = () => {
   return (
     <>
       <Helmet>
-        <title>{product.name} – Shop Premium</title>
-        <meta name="description" content={`Mua ${product.name} giá tốt, giao hàng tự động tại Shop Premium.`} />
-        <link rel="canonical" href={`/product/${product.slug}`} />
+        <title>{product.name} - Mua giá rẻ tại Shop Premium | Tài khoản chính chủ</title>
+        <meta name="description" content={`Mua ${product.name} giá tốt nhất tại Shop Premium. Tài khoản chính chủ 100%, giao hàng tự động 24/7, bảo hành đầy đủ. Giá chỉ từ ${currency(product.price)}.`} />
+        <meta name="keywords" content={`${product.name}, ${product.tags.join(', ')}, tài khoản ${product.category?.toLowerCase()}, mua ${product.name} giá rẻ, shop premium`} />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={`${import.meta.env.VITE_PUBLIC_SITE_URL}/product/${product.slug}`} />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content={`${product.name} - Mua giá rẻ tại Shop Premium`} />
+        <meta property="og:description" content={`Mua ${product.name} giá tốt nhất tại Shop Premium. Tài khoản chính chủ 100%, giao hàng tự động 24/7.`} />
+        <meta property="og:type" content="product" />
+        <meta property="og:url" content={`${import.meta.env.VITE_PUBLIC_SITE_URL}/product/${product.slug}`} />
+        <meta property="og:image" content={`${import.meta.env.VITE_PUBLIC_SITE_URL}${product.image}`} />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="600" />
+        <meta property="og:site_name" content="Shop Premium" />
+        <meta property="product:price:amount" content={product.price.toString()} />
+        <meta property="product:price:currency" content="VND" />
+        <meta property="product:availability" content={product.status === "in_stock" ? "in stock" : "out of stock"} />
+        <meta property="product:category" content={product.category || ""} />
+        
+        {/* Twitter Cards */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${product.name} - Mua giá rẻ tại Shop Premium`} />
+        <meta name="twitter:description" content={`Mua ${product.name} giá tốt nhất tại Shop Premium. Tài khoản chính chủ 100%, giao hàng tự động 24/7.`} />
+        <meta name="twitter:image" content={`${import.meta.env.VITE_PUBLIC_SITE_URL}${product.image}`} />
+        
+        {/* Product Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": product.name,
+            "description": product.description || `Mua ${product.name} giá tốt nhất tại Shop Premium`,
+            "image": `${import.meta.env.VITE_PUBLIC_SITE_URL}${product.image}`,
+            "brand": {
+              "@type": "Brand",
+              "name": "Shop Premium"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": product.price,
+              "priceCurrency": "VND",
+              "availability": product.status === "in_stock" ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+              "seller": {
+                "@type": "Organization",
+                "name": "Shop Premium"
+              },
+              "url": `${import.meta.env.VITE_PUBLIC_SITE_URL}/product/${product.slug}`
+            },
+            "category": product.category,
+            "sku": product.id,
+            "url": `${import.meta.env.VITE_PUBLIC_SITE_URL}/product/${product.slug}`
+          })}
+        </script>
+        
+        {/* Breadcrumb Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Trang chủ",
+                "item": `${import.meta.env.VITE_PUBLIC_SITE_URL}/`
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": product.category || "Sản phẩm",
+                "item": `${import.meta.env.VITE_PUBLIC_SITE_URL}/search?category=${product.category?.toLowerCase()}`
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": product.name,
+                "item": `${import.meta.env.VITE_PUBLIC_SITE_URL}/product/${product.slug}`
+              }
+            ]
+          })}
+        </script>
       </Helmet>
       <Header />
   <main className="container mx-auto px-4 mt-6 min-h-[60vh] grid gap-6 md:grid-cols-12">
@@ -179,6 +259,13 @@ const handleAdd = () => {
           </div>
         </section>
       )}
+
+      {/* Internal Links Section */}
+      <section className="container mx-auto px-4 mb-12">
+        <div className="max-w-4xl mx-auto">
+          <InternalLinks currentProductId={product.id} />
+        </div>
+      </section>
 
       <Footer />
     </>

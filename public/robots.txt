@@ -1,14 +1,26 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
 User-agent: *
 Allow: /
+
+# Sitemap
+Sitemap: https://www.shopacc.pro.vn/sitemap.xml
+
+# Crawl-delay for better server performance
+Crawl-delay: 1
+
+# Block admin and private areas
+Disallow: /admin/
+Disallow: /collaborator/
+Disallow: /api/
+Disallow: /_redirects
+
+# Allow important pages
+Allow: /product/
+Allow: /search
+Allow: /recruitment
+Allow: /contact
+Allow: /privacy
+Allow: /terms
+
+# Block duplicate content
+Disallow: /*?*
+Disallow: /*#*

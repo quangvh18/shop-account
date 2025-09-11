@@ -70,25 +70,25 @@ const CollaboratorRegister = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Helmet>
-        <title>Đăng ký tài khoản CTV</title>
+        <title>Đăng ký cộng tác viên</title>
       </Helmet>
       <Header />
       <main className="flex-1 container mx-auto px-4 py-8 max-w-md">
         <Card className="shadow-soft">
           <CardContent className="p-6 space-y-6">
-            <h1 className="text-2xl font-bold">Đăng ký tài khoản CTV</h1>
+            <h1 className="text-2xl font-bold">Đăng ký cộng tác viên</h1>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium">Email</label>
                 <input className="w-full h-10 border rounded-md px-3 input-focus" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="email@domain.com" />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium">Display name</label>
+                <label className="text-sm font-medium">Tên cộng tác viên</label>
                 <input className="w-full h-10 border rounded-md px-3 input-focus" value={displayName} onChange={(e)=>setDisplayName(e.target.value)} placeholder="Tên hiển thị" />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium">Số điện thoại</label>
-                <input className="w-full h-10 border rounded-md px-3 input-focus" value={phone} onChange={(e)=>setPhone(e.target.value)} placeholder="0987..." />
+                <input className="w-full h-10 border rounded-md px-3 input-focus" value={phone} onChange={(e)=>setPhone(e.target.value)} placeholder="0987654321" />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium">Mật khẩu</label>
