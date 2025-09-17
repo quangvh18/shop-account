@@ -1,4 +1,5 @@
 import chatgptImg from "@/assets/chatgpt-update.png";
+import chatgpt3mImg from "@/assets/chatgpt-3m.png";
 import chatgpt6mImg from "@/assets/chatgpt-6m.png";
 import chatgptShareImg from "@/assets/chatgpt-share.png";
 import claudeImg from "@/assets/claude-1m.png";
@@ -42,16 +43,16 @@ export type Product = {
 
 export const products: Product[] = [
   {
-    id: "chatgpt-plus",
-    slug: "chatgpt-plus-1-thang-tai-khoan-chinh-chu",
-    name: "ChatGPT Plus 1 tháng - TK chính chủ",
-    price: 390000,
-    originalPrice: 500000,
+    id: "chatgpt-plus-3m",
+    slug: "chatgpt-plus-3-thang-tai-khoan-chinh-chu",
+    name: "ChatGPT Plus 3 tháng - Đăng ký lần đầu",
+    price: 920000,
+    originalPrice: 1500000,
     tags: ["openai", "ai", "chatbot"],
-    image: chatgptImg,
+    image: chatgpt3mImg,
     status: "in_stock",
     description:
-      "Nâng cấp tài khoản ChatGPT Plus chính chủ trong 1 tháng. Hỗ trợ hướng dẫn chi tiết và bảo hành trong thời gian sử dụng.",
+      "Nâng cấp tài khoản ChatGPT Plus chính chủ trong 6 tháng. Hỗ trợ hướng dẫn chi tiết và bảo hành trong thời gian sử dụng.",
     category: "AI",
     accountType: "ChatGPT Plus",
   },
@@ -269,7 +270,7 @@ export const products: Product[] = [
     id: "perplexity-pro-12m",
     slug: "perplexity-pro-12m",
     name: "Perplexity Pro 12 tháng - TK chính chủ",
-    price: 380000,
+    price: 1200000,
     originalPrice: 6000000,
     tags: ["ai", "perplexity"],
     image: perplexityPro12mImg,
