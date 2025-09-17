@@ -52,7 +52,7 @@ export const products: Product[] = [
     image: chatgpt3mImg,
     status: "in_stock",
     description:
-      "Nâng cấp tài khoản ChatGPT Plus chính chủ trong 6 tháng. Hỗ trợ hướng dẫn chi tiết và bảo hành trong thời gian sử dụng.",
+      "ChatGPT Plus 3 tháng chính chủ. Truy cập GPT-4o, GPT-4.1 và GPT-5 (bao gồm GPT-5-thinking). Hỗ trợ Advanced Data Analysis, upload file, GPT Store, tạo hình ảnh DALL·E.",
     category: "AI",
     accountType: "ChatGPT Plus",
   },
@@ -66,7 +66,7 @@ export const products: Product[] = [
     image: chatgpt6mImg,
     status: "in_stock",
     description:
-      "Nâng cấp tài khoản ChatGPT Plus chính chủ trong 6 tháng. Hỗ trợ hướng dẫn chi tiết và bảo hành trong thời gian sử dụng.",
+      "ChatGPT Plus 6 tháng chính chủ. Truy cập GPT-4o, GPT-4.1 và GPT-5 (có GPT-5-thinking). Bao gồm Advanced Data Analysis, tạo hình ảnh DALL·E, GPT Store và tính năng API cao cấp.",
     category: "AI",
     accountType: "ChatGPT Plus",
   },
@@ -80,7 +80,7 @@ export const products: Product[] = [
     image: chatgptShareImg,
     status: "in_stock",
     description:
-      "Nâng cấp tài khoản ChatGPT Plus chính chủ trong 1 tháng. Hỗ trợ hướng dẫn chi tiết và bảo hành trong thời gian sử dụng.",
+      "ChatGPT Plus 1 tháng (share). Truy cập GPT-4o, GPT-4.1 và GPT-5. Tốc độ nhanh, ưu tiên giờ cao điểm. Một số tính năng nâng cao có thể bị giới hạn.",
     category: "AI",
     accountType: "ChatGPT Plus",
   },
@@ -94,7 +94,7 @@ export const products: Product[] = [
     image: youtubeImg,
     status: "in_stock",
     description:
-      "Gói YouTube Premium 1 năm – xem video không quảng cáo, nghe nhạc nền, tải ngoại tuyến.",
+      "YouTube Premium 12 tháng: video không quảng cáo, phát nền, tải offline. Bao gồm YouTube Music: nghe nhạc không quảng cáo, phát nền, tải nhạc chất lượng cao.",
     category: "Giải trí",
     accountType: "YouTube Premium",
   },
@@ -108,7 +108,7 @@ export const products: Product[] = [
     image: youtube6Img,
     status: "in_stock",
     description:
-      "Gói YouTube Premium 6 tháng – xem video không quảng cáo, nghe nhạc nền, tải ngoại tuyến.",
+      "YouTube Premium 6 tháng: xem video không quảng cáo, phát trong nền, tải offline. Bao gồm YouTube Music: nghe nhạc nền, không quảng cáo, playlist không giới hạn.",
     category: "Giải trí",
     accountType: "YouTube Premium",
   },
@@ -122,7 +122,7 @@ export const products: Product[] = [
     image: duolingoImg,
     status: "in_stock",
     description:
-      "Tài khoản Duolingo Super chính chủ trong 1 năm. Truy cập không giới hạn các khóa học, không quảng cáo, và các tính năng premium.",
+      "Duolingo Super 12 tháng: học ngôn ngữ không giới hạn, không quảng cáo, unlimited hearts, checkpoint nâng cao, luyện tập cá nhân hoá.",
     category: "Học tập",
     accountType: "Duolingo Super",
   },
@@ -136,7 +136,7 @@ export const products: Product[] = [
     image: spotify3Img,
     status: "in_stock",
     description:
-      "Tài khoản Spotify Premium chính chủ trong 3 tháng. Nghe nhạc không quảng cáo, tải nhạc ngoại tuyến, chất lượng cao.",
+      "Spotify Premium 3 tháng: nghe nhạc không quảng cáo, tải ngoại tuyến, phát chất lượng cao 320kbps, skip không giới hạn.",
     category: "Âm nhạc",
     accountType: "Spotify Premium",
   },
@@ -150,7 +150,7 @@ export const products: Product[] = [
     image: spotify6Img,
     status: "in_stock",
     description:
-      "Tài khoản Spotify Premium chính chủ trong 6 tháng. Nghe nhạc không quảng cáo, tải nhạc ngoại tuyến, chất lượng cao.",
+      "Spotify Premium 6 tháng: toàn bộ nhạc, podcast không giới hạn. Không quảng cáo, phát ngoại tuyến, chất lượng cao, bỏ qua bài hát không giới hạn.",
     category: "Âm nhạc",
     accountType: "Spotify Premium",
   },
@@ -164,7 +164,7 @@ export const products: Product[] = [
     image: spotifyImg,
     status: "in_stock",
     description:
-      "Tài khoản Spotify Premium chính chủ trong 1 năm. Nghe nhạc không quảng cáo, tải nhạc ngoại tuyến, chất lượng cao.",
+      "Spotify Premium 12 tháng: nghe nhạc, podcast không giới hạn. Chất lượng cao (320kbps/lossless), không quảng cáo, phát ngoại tuyến, bỏ qua bài hát thoải mái.",
     category: "Âm nhạc",
     accountType: "Spotify Premium",
   },
@@ -178,7 +178,7 @@ export const products: Product[] = [
     image: claudeImg,
     status: "in_stock",
     description:
-      "Tài khoản Claude Pro chính chủ với $20 credit trong 1 tháng. Truy cập Claude Sonnet 3.5, xử lý tài liệu, phân tích dữ liệu.",
+      "Claude Pro 1 tháng với $20 credit. Truy cập Claude 3.5 Sonnet và Claude 3.5 Opus. Hỗ trợ viết nội dung dài, phân tích dữ liệu, upload tài liệu lớn.",
     category: "AI",
     accountType: "Claude Pro",
   },
@@ -192,7 +192,7 @@ export const products: Product[] = [
     image: capcut1mImg,
     status: "in_stock",
     description:
-      "Tài khoản CapCut Pro chính chủ trong 1 tháng. Truy cập tất cả hiệu ứng premium, xuất video chất lượng cao, không watermark.",
+      "CapCut Pro 1 tháng: kho hiệu ứng premium, template cao cấp, AI background remover, auto caption, xuất video 4K không watermark.",
     category: "Video Editor",
     accountType: "CapCut Pro",
   },
@@ -206,7 +206,7 @@ export const products: Product[] = [
     image: capcut1yImg,
     status: "in_stock",
     description:
-      "Tài khoản CapCut Pro chính chủ trong 1 năm. Truy cập tất cả hiệu ứng premium, xuất video chất lượng cao, không watermark.",
+      "CapCut Pro 12 tháng: đầy đủ hiệu ứng cao cấp, template, AI edit, xuất video 4K không watermark. Hỗ trợ multi-device, cloud sync.",
     category: "Video Editor",
     accountType: "CapCut Pro",
   },
@@ -220,7 +220,7 @@ export const products: Product[] = [
     image: netflix1mImg,
     status: "in_stock",
     description:
-      "Tài khoản Netflix Premium chính chủ trong 1 tháng. Xem phim không giới hạn, chất lượng 4K, nhiều thiết bị.",
+      "Netflix Premium 1 tháng: xem phim, series không giới hạn. Chất lượng 4K HDR, Dolby Atmos, nhiều profile, xem đồng thời trên nhiều thiết bị.",
     category: "Giải trí",
     accountType: "Netflix Premium",
   },
@@ -234,7 +234,7 @@ export const products: Product[] = [
     image: grok1mImg,
     status: "in_stock",
     description:
-      "Tài khoản SuperGrok chính chủ trong 1 tháng. AI chatbot của X (Twitter) với khả năng truy cập thông tin real-time.",
+      "SuperGrok 1 tháng: truy cập Grok-1.5 (xAI). AI chatbot của X (Twitter), khả năng trả lời real-time, khai thác dữ liệu mạng xã hội, tìm kiếm thông tin tức thì.",
     category: "AI",
     accountType: "SuperGrok",
   },
@@ -248,7 +248,7 @@ export const products: Product[] = [
     image: googleOne1yImg,
     status: "in_stock",
     description:
-      "Tài khoản Google One 2TB chính chủ trong 1 tháng. Bao gồm Gemini Pro, NotebookLM, Veo 3, và nhiều tính năng AI khác.",
+      "Google One 2TB 1 tháng: 2TB lưu trữ đám mây. Bao gồm Gemini Pro (Gemini 1.5 Flash/Pro), NotebookLM, Veo 3, quyền lợi credit AI mới.",
     category: "AI",
     accountType: "Google One",
   },
@@ -262,7 +262,7 @@ export const products: Product[] = [
     image: googleOne1yImg,
     status: "in_stock",
     description:
-      "Tài khoản Google One 2TB chính chủ trong 1 năm. Bao gồm Gemini Pro, NotebookLM, Veo 3, và nhiều tính năng AI khác.",
+      "Google One 2TB 12 tháng: 2TB lưu trữ. Bao gồm Gemini Pro (Gemini 1.5 Flash/Pro), NotebookLM, Veo 3 và quyền lợi credit AI. Chia sẻ nhóm gia đình.",
     category: "AI",
     accountType: "Google One",
   },
@@ -276,7 +276,7 @@ export const products: Product[] = [
     image: perplexityPro12mImg,
     status: "in_stock",
     description:
-      "Tài khoản Perplexity Pro chính chủ trong 12 tháng. AI search engine với khả năng tìm kiếm và phân tích thông tin chính xác.",
+      "Perplexity Pro 12 tháng: AI search engine chính xác. Truy cập đa model: GPT-4o, GPT-4.1, GPT-5 (OpenAI), Claude 3.5 Sonnet & Opus (Anthropic), Grok-1.5 (xAI).",
     category: "AI",
     accountType: "Perplexity Pro",
   },
