@@ -15,6 +15,8 @@ import netflix1mImg from "@/assets/netflix-1m.png";
 import grok1mImg from "@/assets/grok-1m.png";
 import googleOne1yImg from "@/assets/google-one-2tb-1y.png";
 import perplexityPro12mImg from "@/assets/perplexity-pro-12m.png";
+import microsoft1yImg from "@/assets/microsoft-1y.png";
+
 
 export type Product = {
   id: string;
@@ -38,7 +40,8 @@ export type Product = {
     | "Netflix Premium"
     | "SuperGrok"
     | "Google One"
-    | "Perplexity Pro";
+    | "Perplexity Pro"
+    | "Microsoft";
 };
 
 export const products: Product[] = [
@@ -279,6 +282,20 @@ export const products: Product[] = [
       "Perplexity Pro 12 tháng: AI search engine chính xác. Truy cập đa model: GPT-4o, GPT-4.1, GPT-5 (OpenAI), Claude 3.5 Sonnet & Opus (Anthropic), Grok-1.5 (xAI).",
     category: "AI",
     accountType: "Perplexity Pro",
+  },
+  {
+    id: "microsoft-1y",
+    slug: "microsoft-1y",
+    name: "Microsoft 1 năm - TK chính chủ",
+    price: 360000,
+    originalPrice: 1299000,
+    tags: ["office 365", "microsoft", "onedrive", "teams", "outlook", "excel", "powerpoint", "word"],
+    image: microsoft1yImg,
+    status: "in_stock",
+    description:
+      "Microsoft 12 tháng: Office 365, OneDrive, Teams, Outlook, Excel, PowerPoint, Word. Hỗ trợ nhiều thiết bị, multi-device, cloud sync.",
+    category: "Office",
+    accountType: "Microsoft",
   },
 ];
 
