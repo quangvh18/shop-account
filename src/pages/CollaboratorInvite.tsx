@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/context/AuthContext";
+import CommissionTable from "@/components/CommissionTable";
 
 const generateRefCode = () => Math.floor(100000 + Math.random() * 900000).toString();
 
@@ -93,6 +94,10 @@ const CollaboratorInvite = () => {
   return (
     <div className="space-y-4 sm:space-y-6 p-4 sm:p-6">
       <h1 className="text-xl sm:text-2xl font-bold tracking-tight">Tạo mã mời</h1>
+      
+      {/* Commission Table */}
+      <CommissionTable />
+      
       <Card className="shadow-soft">
         <CardContent className="p-4 sm:p-6 space-y-4 sm:space-y-6">
           {loadingRef ? (

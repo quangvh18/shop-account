@@ -27,6 +27,7 @@ const HeroSection = () => {
       {/* Left categories */}
       <aside className="col-span-12 md:col-span-3 h-full">
         <nav className="rounded-xl border bg-card p-3 h-full flex flex-col">
+          <h2 className="sr-only">Danh mục sản phẩm</h2>
           <ul className="space-y-2 flex-1">
             {categories.map(({ label, icon: Icon, to }) => (
               <li key={label}>
@@ -42,6 +43,7 @@ const HeroSection = () => {
 
       {/* Center carousel */}
       <div className="col-span-12 md:col-span-6 flex flex-col h-full">
+        <h2 className="sr-only">Khuyến mại đặc biệt</h2>
         <div className="flex-1 flex h-full min-h-full">
           <Carousel className="w-full flex-1 h-full min-h-full">
             <CarouselContent className="h-full min-h-full">
@@ -57,6 +59,7 @@ const HeroSection = () => {
 
       {/* Right banners */}
   <aside className="col-span-12 md:col-span-3 grid gap-4 h-full">
+        <h2 className="sr-only">Sản phẩm khuyến mại</h2>
         <Link to="/search?category=B%E1%BA%A3o%20m%E1%BA%ADt" className="rounded-xl border p-0 relative overflow-hidden group" style={{background: `#eaf1ff`}}>
           <img src={designBg} alt="VPN" className="w-full h-32 md:h-40 object-cover" />
         </Link>

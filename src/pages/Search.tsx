@@ -62,6 +62,7 @@ const Search = () => {
         <h1 className="text-2xl font-bold">Tìm kiếm sản phẩm</h1>
         <section className="mt-4 grid gap-4 md:grid-cols-12">
           <aside className="md:col-span-3 space-y-3 rounded-lg border p-4">
+            <h2 className="sr-only">Bộ lọc tìm kiếm</h2>
             <div className="space-y-2">
               <label className="text-sm font-medium">Từ khóa</label>
               <Input placeholder="Nhập tên sản phẩm" value={q} onChange={(e)=>setQ(e.target.value)} />

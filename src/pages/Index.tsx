@@ -98,6 +98,7 @@ const Index = () => {
       </Helmet>
       <Header />
       <main className="flex-1 container mx-auto px-4 animate-fade-in">
+        <h1 className="sr-only">Shop Premium - Cửa hàng tài khoản số uy tín #1 Việt Nam</h1>
         <HeroSection />
         
         <section className="mt-8 sm:mt-12 lg:mt-16 pb-8">
