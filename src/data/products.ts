@@ -16,6 +16,7 @@ import grok1mImg from "@/assets/grok-1m.png";
 import googleOne1yImg from "@/assets/google-one-2tb-1y.png";
 import perplexityPro12mImg from "@/assets/perplexity-pro-12m.png";
 import microsoft1yImg from "@/assets/microsoft-1y.png";
+import canvaImg from "@/assets/canva-pro-1y.png";
 
 
 export type Product = {
@@ -41,7 +42,8 @@ export type Product = {
     | "SuperGrok"
     | "Google One"
     | "Perplexity Pro"
-    | "Microsoft";
+    | "Microsoft"
+    | "Canva Pro";
 };
 
 export const products: Product[] = [
@@ -296,6 +298,20 @@ export const products: Product[] = [
       "Microsoft 12 tháng: Office 365, OneDrive, Teams, Outlook, Excel, PowerPoint, Word. Hỗ trợ nhiều thiết bị, multi-device, cloud sync.",
     category: "Office",
     accountType: "Microsoft",
+  },
+  {
+    id: "canva-pro-1y",
+    slug: "canva-pro-1y",
+    name: "Canva Pro 1 năm",
+    price: 169000,
+    originalPrice: 1500000,
+    tags: ["canva", "design"],
+    image: canvaImg,
+    status: "in_stock",
+    description:
+      "Canva Pro 12 tháng: thiết kế đồ họa, video, infographic, logo, banner, social media, presentation. Hỗ trợ nhiều thiết bị, multi-device, cloud sync.",
+    category: "Design",
+    accountType: "Canva Pro",
   },
 ];
 
