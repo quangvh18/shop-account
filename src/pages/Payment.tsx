@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { toast } from "@/hooks/use-toast";
 import { CheckCircle, Loader2 } from "lucide-react";
-import qrImage from "@/assets/qrcode.jpg";
+import qrImage from "@/assets/qrcode.webp";
 import notificationService from "@/lib/notification";
 import { useEffect, useState } from "react";
 import { getStoredRef, fetchCollaboratorByRef, type Collaborator } from "@/lib/referral";

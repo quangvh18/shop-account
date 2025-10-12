@@ -1,10 +1,10 @@
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import * as React from "react";
-import hero1 from "@/assets/hero-capcut.png";
-import hero2 from "@/assets/hero-netflix.png";
-import hero3 from "@/assets/hero-youtube.png";
-import hero4 from "@/assets/hero-google-one.png";
-import hero5 from "@/assets/hero-zoom.png";
+import hero1 from "@/assets/hero-capcut.webp";
+import hero2 from "@/assets/hero-netflix.webp";
+import hero3 from "@/assets/hero-youtube.webp";
+import hero4 from "@/assets/hero-google-one.webp";
+import hero5 from "@/assets/hero-zoom.webp";
 
 const slides = [
   { img: hero1, alt: "Ứng dụng CapCut" },

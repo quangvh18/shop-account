@@ -1,11 +1,11 @@
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
-import hero1 from "@/assets/hero-capcut.png";
-import hero2 from "@/assets/hero-youtube.png";
-import hero3 from "@/assets/hero-netflix.png";
+import hero1 from "@/assets/hero-capcut.webp";
+import hero2 from "@/assets/hero-youtube.webp";
+import hero3 from "@/assets/hero-netflix.webp";
 import { Link } from "react-router-dom";
 import { Gamepad2, GraduationCap, Shield, Laptop, Brain, Code, Video, Music } from "lucide-react";
-import designBg from "@/assets/thiet-ke.png";
-import aiBg from "@/assets/ai.png";
+import designBg from "@/assets/thiet-ke.webp";
+import aiBg from "@/assets/ai.webp";
 
 const slides = [
   { img: hero1, alt: "Khuyến mại YouTube" },
