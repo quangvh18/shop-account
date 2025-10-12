@@ -17,7 +17,7 @@ import googleOne1yImg from "@/assets/google-one-2tb-1y.png";
 import perplexityPro12mImg from "@/assets/perplexity-pro-12m.png";
 import microsoft1yImg from "@/assets/microsoft-1y.png";
 import canvaImg from "@/assets/canva-pro-1y.png";
-
+import googleAiUltraImg from "@/assets/google-ai-ultra.png"
 
 export type Product = {
   id: string;
@@ -93,7 +93,7 @@ export const products: Product[] = [
     id: "youtube-premium-1y",
     slug: "youtube-premium-1-nam",
     name: "YouTube Premium 1 năm + Music",
-    price: 540000,
+    price: 580000,
     originalPrice: 1290000,
     tags: ["youtube", "music", "video"],
     image: youtubeImg,
@@ -275,7 +275,7 @@ export const products: Product[] = [
     id: "perplexity-pro-12m",
     slug: "perplexity-pro-12m",
     name: "Perplexity Pro 12 tháng - TK chính chủ",
-    price: 1200000,
+    price: 399000,
     originalPrice: 6000000,
     tags: ["ai", "perplexity"],
     image: perplexityPro12mImg,
@@ -310,6 +310,20 @@ export const products: Product[] = [
     status: "in_stock",
     description:
       "Canva Pro 12 tháng: thiết kế đồ họa, video, infographic, logo, banner, social media, presentation. Hỗ trợ nhiều thiết bị, multi-device, cloud sync.",
+    category: "Design",
+    accountType: "Canva Pro",
+  },
+  {
+    id: "google-ai-ultra-1m",
+    slug: "google-ai-ultra-1m",
+    name: "Google AI Ultra (45k Credit VEO 3) 1 tháng",
+    price: 199000,
+    originalPrice: 6500000,
+    tags: ["ai", "veo 3"],
+    image: googleAiUltraImg,
+    status: "in_stock",
+    description:
+      "Google AI Ultra 1 tháng: tạo video Veo 3 thoả thích, trải nghiệm Whisk — biến hình ảnh/thông tin thành video ngắn. Sửa dụng NotebookLM với hạn mức cao hơn.",
     category: "Design",
     accountType: "Canva Pro",
   },
