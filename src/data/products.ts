@@ -19,6 +19,7 @@ import microsoft1yImg from "@/assets/microsoft-1y.webp";
 import canvaImg from "@/assets/canva-pro-1y.webp";
 import googleAiUltraImg from "@/assets/google-ai-ultra.webp"
 import githubImg from "@/assets/github-student-park.webp"
+import jetbrainsImg from "@/assets/jetbrains-1y.webp"
 
 export type Product = {
   id: string;
@@ -32,20 +33,21 @@ export type Product = {
   description?: string;
   category?: string;
   accountType?:
-    | "ChatGPT Plus"
-    | "YouTube Premium"
-    | "Duolingo Super"
-    | "Spotify Premium"
-    | "Claude Pro"
-    | "CapCut Pro"
-    | "Gemini Pro"
-    | "Netflix Premium"
-    | "SuperGrok"
-    | "Google One"
-    | "Perplexity Pro"
-    | "Microsoft"
-    | "Canva Pro"
-    | "GitHub Copilot";
+  | "ChatGPT Plus"
+  | "YouTube Premium"
+  | "Duolingo Super"
+  | "Spotify Premium"
+  | "Claude Pro"
+  | "CapCut Pro"
+  | "Gemini Pro"
+  | "Netflix Premium"
+  | "SuperGrok"
+  | "Google One"
+  | "Perplexity Pro"
+  | "Microsoft"
+  | "Canva Pro"
+  | "GitHub Copilot"
+  | "JetBrains";
 };
 
 export const products: Product[] = [
@@ -62,6 +64,20 @@ export const products: Product[] = [
       "GitHub Copilot Student Pack 1 tháng: Truy cập AI coding assistant, hỗ trợ lập trình, gợi ý mã nguồn, tài liệu tham khảo.",
     category: "Development",
     accountType: "GitHub Copilot",
+  },
+  {
+    id: "jetbrains-1y",
+    slug: "jetbrains-1y",
+    name: "Ứng dụng lập trình JetBrains All Products Pack (1 năm)",
+    price: 120000,
+    originalPrice: 250000,
+    tags: ["jetbrains", "coding", "ai"],
+    image: jetbrainsImg,
+    status: "in_stock",
+    description:
+      "JetBrains Student Pack 1 tháng: Truy cập AI coding assistant, hỗ trợ lập trình, gợi ý mã nguồn, tài liệu tham khảo.",
+    category: "Development",
+    accountType: "JetBrains",
   },
   {
     id: "canva-pro-1y",
