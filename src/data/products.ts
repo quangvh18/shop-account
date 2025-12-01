@@ -52,30 +52,38 @@ export type Product = {
 
 export const products: Product[] = [
   {
-    id: "github-copilot-1m",
-    slug: "github-copilot-1m",
-    name: "GitHub Copilot Student Pack 1 tháng",
-    price: 120000,
-    originalPrice: 250000,
+    id: "github-copilot-2y",
+    slug: "github-copilot-2y",
+    name: "GitHub Copilot Student Pack 2 năm",
+    price: 960000,
+    originalPrice: 6000000,
     tags: ["github", "coding", "ai"],
     image: githubImg,
     status: "in_stock",
-    description:
-      "GitHub Copilot Student Pack 1 tháng: Truy cập AI coding assistant, hỗ trợ lập trình, gợi ý mã nguồn, tài liệu tham khảo.",
+    description: `Tài khoản GitHub Student Developer Pack cho phép bạn hưởng các lợi ích sau:
+
+- Các tính năng GitHub Pro, xem chi tiết tại đây
+
+- GitHub Student Developer Pack partner offers cho bạn rất nhiều lợi ích đến từ các partners của GitHub như VS Code, Microsoft Azure, Heroku, MongoDB...
+
+- GitHub Campus đào tạo chuyên nghiệp cho các ứng viên đủ điều kiện.`,
     category: "Development",
     accountType: "GitHub Copilot",
   },
   {
     id: "jetbrains-1y",
     slug: "jetbrains-1y",
-    name: "Ứng dụng lập trình JetBrains All Products Pack (1 năm)",
+    name: "JetBrains All Products Pack (1 năm)",
     price: 460000,
     originalPrice: 6900000,
     tags: ["jetbrains", "coding", "ai"],
     image: jetbrainsImg,
     status: "in_stock",
-    description:
-      "JetBrains Student Pack 1 năm: Truy cập AI coding assistant, hỗ trợ lập trình, gợi ý mã nguồn, tài liệu tham khảo.",
+    description: `JetBrains All Products Pack 1 năm: Truy cập toàn bộ bộ công cụ lập trình đỉnh cao của JetBrains bao gồm IntelliJ IDEA, PyCharm, WebStorm, PhpStorm, ReSharper, và nhiều hơn nữa.
+
+- Hỗ trợ đa ngôn ngữ, refactoring thông minh.
+- Tích hợp AI Assistant giúp tăng tốc độ coding.
+- Công cụ debug và profile hiệu năng mạnh mẽ.`,
     category: "Development",
     accountType: "JetBrains",
   },
@@ -88,8 +96,11 @@ export const products: Product[] = [
     tags: ["canva", "design"],
     image: canvaImg,
     status: "in_stock",
-    description:
-      "Canva Pro 12 tháng: thiết kế đồ họa, video, infographic, logo, banner, social media, presentation. Hỗ trợ nhiều thiết bị, multi-device, cloud sync.",
+    description: `Canva Pro 1 năm: Mở khóa toàn bộ tính năng thiết kế cao cấp.
+
+- Truy cập kho thư viện khổng lồ với hơn 100 triệu ảnh, video, âm thanh và graphics.
+- Sử dụng các công cụ AI mạnh mẽ như Magic Resize, Background Remover, và Magic Studio.
+- Hỗ trợ Brand Kit để quản lý thương hiệu và làm việc nhóm hiệu quả.`,
     category: "Design",
     accountType: "Canva Pro",
   },
@@ -97,13 +108,16 @@ export const products: Product[] = [
     id: "google-ai-ultra-1m",
     slug: "google-ai-ultra-1m",
     name: "Google AI Ultra (45k Credit VEO 3) 1 tháng",
-    price: 199000,
+    price: 119000,
     originalPrice: 6500000,
     tags: ["ai", "veo 3"],
     image: googleAiUltraImg,
     status: "in_stock",
-    description:
-      "Google AI Ultra 1 tháng: tạo video Veo 3 thoả thích, trải nghiệm Whisk — biến hình ảnh/thông tin thành video ngắn. Sửa dụng NotebookLM với hạn mức cao hơn.",
+    description: `Google AI Ultra 1 tháng: Trải nghiệm sức mạnh AI tối thượng.
+
+- Truy cập Gemini Advanced với mô hình AI mạnh mẽ nhất (Ultra 1.0/Pro 1.5).
+- Bao gồm 45k Credit Veo 3 để tạo video chất lượng cao.
+- Sử dụng NotebookLM với hạn mức nâng cao cho nghiên cứu và phân tích dữ liệu.`,
     category: "Design",
     accountType: "Canva Pro",
   },
@@ -116,8 +130,11 @@ export const products: Product[] = [
     tags: ["ai", "gemini", "google one", "notebook lm", "veo 3"],
     image: googleOne1yImg,
     status: "in_stock",
-    description:
-      "Google One 2TB 1 tháng: 2TB lưu trữ đám mây. Bao gồm Gemini Pro (Gemini 1.5 Flash/Pro), NotebookLM, Veo 3, quyền lợi credit AI mới.",
+    description: `Google One AI Premium 2TB (1 tháng): Gói thành viên cao cấp nhất của Google.
+
+- Sở hữu 2TB dung lượng lưu trữ đám mây an toàn cho Google Photos, Drive, Gmail.
+- Đặc quyền truy cập Gemini Advanced với mô hình AI mạnh mẽ nhất.
+- Tích hợp Gemini vào Gmail, Docs, Slides, Sheets giúp tăng hiệu suất làm việc.`,
     category: "AI",
     accountType: "Google One",
   },
@@ -130,8 +147,11 @@ export const products: Product[] = [
     tags: ["ai", "gemini", "google one", "notebook lm", "veo 3"],
     image: googleOne1yImg,
     status: "in_stock",
-    description:
-      "Google One 2TB 12 tháng: 2TB lưu trữ. Bao gồm Gemini Pro (Gemini 1.5 Flash/Pro), NotebookLM, Veo 3 và quyền lợi credit AI. Chia sẻ nhóm gia đình.",
+    description: `Google One AI Premium 2TB (1 năm): Giải pháp lưu trữ và AI toàn diện.
+
+- 2TB lưu trữ đám mây chia sẻ cho gia đình (lên đến 5 thành viên).
+- Truy cập không giới hạn Gemini Advanced và các mô hình AI mới nhất.
+- Các lợi ích độc quyền của Google One: Hỗ trợ chuyên gia, chỉnh sửa ảnh nâng cao trong Google Photos.`,
     category: "AI",
     accountType: "Google One",
   },
@@ -144,8 +164,11 @@ export const products: Product[] = [
     tags: ["ai", "perplexity"],
     image: perplexityPro12mImg,
     status: "in_stock",
-    description:
-      "Perplexity Pro 12 tháng: AI search engine chính xác. Truy cập đa model: GPT-4o, GPT-4.1, GPT-5 (OpenAI), Claude 3.5 Sonnet & Opus (Anthropic), Grok-1.5 (xAI).",
+    description: `Perplexity Pro 1 năm: Công cụ tìm kiếm AI mạnh mẽ nhất.
+
+- Chuyển đổi linh hoạt giữa các mô hình AI hàng đầu: GPT-4o, Claude 3.5 Sonnet, Grok.
+- Pro Search: Tìm kiếm chuyên sâu với khả năng lập luận đa bước và trích dẫn nguồn uy tín.
+- Upload file không giới hạn để phân tích dữ liệu và tóm tắt tài liệu.`,
     category: "AI",
     accountType: "Perplexity Pro",
   },
@@ -158,8 +181,11 @@ export const products: Product[] = [
     tags: ["office 365", "microsoft", "onedrive", "teams", "outlook", "excel", "powerpoint", "word"],
     image: microsoft1yImg,
     status: "in_stock",
-    description:
-      "Microsoft 12 tháng: Office 365, OneDrive, Teams, Outlook, Excel, PowerPoint, Word. Hỗ trợ nhiều thiết bị, multi-device, cloud sync.",
+    description: `Microsoft 365 Personal 1 năm: Giải pháp làm việc chuyên nghiệp.
+
+- Cài đặt bộ ứng dụng Office cao cấp (Word, Excel, PowerPoint, Outlook) trên tối đa 5 thiết bị.
+- Tặng kèm 1TB lưu trữ đám mây OneDrive với tính năng bảo mật Personal Vault.
+- Hỗ trợ các tính năng AI và mẫu thiết kế cao cấp trong ứng dụng.`,
     category: "Office",
     accountType: "Microsoft",
   },
@@ -172,8 +198,11 @@ export const products: Product[] = [
     tags: ["openai", "ai", "chatbot"],
     image: chatgpt3mImg,
     status: "in_stock",
-    description:
-      "ChatGPT Plus 3 tháng chính chủ. Truy cập GPT-4o, GPT-4.1 và GPT-5 (bao gồm GPT-5-thinking). Hỗ trợ Advanced Data Analysis, upload file, GPT Store, tạo hình ảnh DALL·E.",
+    description: `ChatGPT Plus 3 tháng: Mở khóa sức mạnh AI tiên tiến nhất.
+
+- Truy cập ưu tiên vào GPT-4o, o1-preview và các mô hình mới nhất.
+- Sử dụng DALL·E 3 để tạo hình ảnh nghệ thuật chất lượng cao.
+- Phân tích dữ liệu nâng cao, upload file và trò chuyện giọng nói (Voice Mode).`,
     category: "AI",
     accountType: "ChatGPT Plus",
   },
@@ -186,8 +215,11 @@ export const products: Product[] = [
     tags: ["openai", "ai", "chatbot"],
     image: chatgpt6mImg,
     status: "in_stock",
-    description:
-      "ChatGPT Plus 6 tháng chính chủ. Truy cập GPT-4o, GPT-4.1 và GPT-5 (có GPT-5-thinking). Bao gồm Advanced Data Analysis, tạo hình ảnh DALL·E, GPT Store và tính năng API cao cấp.",
+    description: `ChatGPT Plus 6 tháng: Trải nghiệm AI liền mạch và mạnh mẽ.
+
+- Truy cập ổn định và nhanh chóng vào các mô hình GPT-4o, o1-preview.
+- Khai thác kho GPTs tùy chỉnh đa dạng từ cộng đồng.
+- Tính năng Advanced Data Analysis giúp xử lý số liệu và biểu đồ phức tạp.`,
     category: "AI",
     accountType: "ChatGPT Plus",
   },
@@ -200,8 +232,11 @@ export const products: Product[] = [
     tags: ["openai", "ai", "chatbot"],
     image: chatgptShareImg,
     status: "in_stock",
-    description:
-      "ChatGPT Plus 1 tháng (share). Truy cập GPT-4o, GPT-4.1 và GPT-5. Tốc độ nhanh, ưu tiên giờ cao điểm. Một số tính năng nâng cao có thể bị giới hạn.",
+    description: `ChatGPT Plus 1 tháng (Share): Giải pháp tiết kiệm chi phí.
+
+- Trải nghiệm các tính năng cốt lõi của ChatGPT Plus với mức giá phải chăng.
+- Truy cập GPT-4o và các mô hình tiên tiến.
+- Phù hợp cho nhu cầu sử dụng cơ bản và trải nghiệm công nghệ mới.`,
     category: "AI",
     accountType: "ChatGPT Plus",
   },
@@ -214,8 +249,11 @@ export const products: Product[] = [
     tags: ["youtube", "music", "video"],
     image: youtubeImg,
     status: "in_stock",
-    description:
-      "YouTube Premium 12 tháng: video không quảng cáo, phát nền, tải offline. Bao gồm YouTube Music: nghe nhạc không quảng cáo, phát nền, tải nhạc chất lượng cao.",
+    description: `YouTube Premium 1 năm: Giải trí không giới hạn.
+
+- Xem video hoàn toàn không quảng cáo trên mọi thiết bị.
+- Tính năng phát trong nền (Background Play) và Picture-in-Picture.
+- Tặng kèm YouTube Music Premium: Nghe nhạc chất lượng cao, tắt màn hình vẫn phát.`,
     category: "Giải trí",
     accountType: "YouTube Premium",
   },
@@ -228,8 +266,11 @@ export const products: Product[] = [
     tags: ["youtube", "music", "video"],
     image: youtube6Img,
     status: "in_stock",
-    description:
-      "YouTube Premium 6 tháng: xem video không quảng cáo, phát trong nền, tải offline. Bao gồm YouTube Music: nghe nhạc nền, không quảng cáo, playlist không giới hạn.",
+    description: `YouTube Premium 6 tháng: Trải nghiệm xem video đỉnh cao.
+
+- Không còn bị làm phiền bởi quảng cáo khi xem video.
+- Tải video xuống để xem offline khi không có mạng.
+- Thưởng thức kho nhạc khổng lồ với YouTube Music Premium miễn phí đi kèm.`,
     category: "Giải trí",
     accountType: "YouTube Premium",
   },
@@ -242,8 +283,11 @@ export const products: Product[] = [
     tags: ["education"],
     image: duolingoImg,
     status: "in_stock",
-    description:
-      "Duolingo Super 12 tháng: học ngôn ngữ không giới hạn, không quảng cáo, unlimited hearts, checkpoint nâng cao, luyện tập cá nhân hoá.",
+    description: `Duolingo Super 1 năm: Học ngoại ngữ nhanh hơn và vui hơn.
+
+- Loại bỏ hoàn toàn quảng cáo gián đoạn quá trình học.
+- Trái tim vô hạn (Unlimited Hearts) giúp bạn học thoải mái không lo sai.
+- Luyện tập cá nhân hóa và thực hiện bài kiểm tra Huyền thoại không giới hạn.`,
     category: "Học tập",
     accountType: "Duolingo Super",
   },
@@ -256,8 +300,11 @@ export const products: Product[] = [
     tags: ["music", "spotify"],
     image: spotify3Img,
     status: "in_stock",
-    description:
-      "Spotify Premium 3 tháng: nghe nhạc không quảng cáo, tải ngoại tuyến, phát chất lượng cao 320kbps, skip không giới hạn.",
+    description: `Spotify Premium 3 tháng: Âm nhạc không giới hạn.
+
+- Nghe nhạc không quảng cáo, chất lượng âm thanh cao cấp.
+- Tải nhạc nghe offline mọi lúc mọi nơi.
+- Chuyển bài không giới hạn (Unlimited Skips) và phát bất kỳ bài nào bạn thích.`,
     category: "Âm nhạc",
     accountType: "Spotify Premium",
   },
@@ -270,8 +317,11 @@ export const products: Product[] = [
     tags: ["music", "spotify"],
     image: spotify6Img,
     status: "in_stock",
-    description:
-      "Spotify Premium 6 tháng: toàn bộ nhạc, podcast không giới hạn. Không quảng cáo, phát ngoại tuyến, chất lượng cao, bỏ qua bài hát không giới hạn.",
+    description: `Spotify Premium 6 tháng: Thế giới âm nhạc trong tầm tay.
+
+- Tận hưởng âm nhạc chất lượng cao, không bị gián đoạn.
+- Tính năng Spotify Connect điều khiển nhạc linh hoạt trên mọi thiết bị.
+- Kho Podcast khổng lồ và các playlist được cá nhân hóa riêng cho bạn.`,
     category: "Âm nhạc",
     accountType: "Spotify Premium",
   },
@@ -284,8 +334,11 @@ export const products: Product[] = [
     tags: ["music", "spotify"],
     image: spotifyImg,
     status: "in_stock",
-    description:
-      "Spotify Premium 12 tháng: nghe nhạc, podcast không giới hạn. Chất lượng cao (320kbps/lossless), không quảng cáo, phát ngoại tuyến, bỏ qua bài hát thoải mái.",
+    description: `Spotify Premium 1 năm: Trải nghiệm âm nhạc trọn vẹn.
+
+- Tiết kiệm hơn với gói dài hạn.
+- Nghe nhạc offline, không quảng cáo, chất lượng âm thanh vòm.
+- Tạo và chia sẻ playlist không giới hạn với bạn bè.`,
     category: "Âm nhạc",
     accountType: "Spotify Premium",
   },
@@ -298,8 +351,11 @@ export const products: Product[] = [
     tags: ["ai", "claude"],
     image: claudeImg,
     status: "in_stock",
-    description:
-      "Claude Pro 1 tháng với $20 credit. Truy cập Claude 3.5 Sonnet và Claude 3.5 Opus. Hỗ trợ viết nội dung dài, phân tích dữ liệu, upload tài liệu lớn.",
+    description: `Claude Pro 1 tháng: Trợ lý AI thông minh và tinh tế.
+
+- Truy cập các mô hình mạnh nhất: Claude 3.5 Sonnet, Claude 3 Opus.
+- Cửa sổ ngữ cảnh lớn (Context Window) xử lý tài liệu dài và code phức tạp.
+- Tính năng Projects giúp quản lý kiến thức và làm việc theo dự án hiệu quả.`,
     category: "AI",
     accountType: "Claude Pro",
   },
@@ -312,8 +368,11 @@ export const products: Product[] = [
     tags: ["video", "capcut"],
     image: capcut1mImg,
     status: "in_stock",
-    description:
-      "CapCut Pro 1 tháng: kho hiệu ứng premium, template cao cấp, AI background remover, auto caption, xuất video 4K không watermark.",
+    description: `CapCut Pro 1 tháng: Biên tập video chuyên nghiệp trên mọi thiết bị.
+
+- Mở khóa kho hiệu ứng, chuyển cảnh và bộ lọc Pro độc quyền.
+- Các tính năng AI: Xóa nền, Tự động tạo phụ đề, Chỉnh sửa cơ thể.
+- Xuất video chất lượng 4K sắc nét, không dính logo (watermark).`,
     category: "Video Editor",
     accountType: "CapCut Pro",
   },
@@ -326,8 +385,11 @@ export const products: Product[] = [
     tags: ["video", "capcut"],
     image: capcut1yImg,
     status: "in_stock",
-    description:
-      "CapCut Pro 12 tháng: đầy đủ hiệu ứng cao cấp, template, AI edit, xuất video 4K không watermark. Hỗ trợ multi-device, cloud sync.",
+    description: `CapCut Pro 1 năm: Sáng tạo video không giới hạn.
+
+- Truy cập đầy đủ các công cụ chỉnh sửa nâng cao và kho tài nguyên Pro.
+- Đồng bộ đám mây (Cloud Sync) giúp chỉnh sửa liền mạch trên điện thoại và máy tính.
+- Cập nhật liên tục các trend và mẫu template mới nhất.`,
     category: "Video Editor",
     accountType: "CapCut Pro",
   },
@@ -340,8 +402,11 @@ export const products: Product[] = [
     tags: ["movie", "netflix"],
     image: netflix1mImg,
     status: "in_stock",
-    description:
-      "Netflix Premium 6 tháng: xem phim, series không giới hạn. Chất lượng 4K HDR, Dolby Atmos, nhiều profile, xem đồng thời trên nhiều thiết bị.",
+    description: `Netflix Premium 6 tháng: Rạp phim tại gia.
+
+- Xem phim chất lượng 4K Ultra HD và HDR sống động.
+- Âm thanh Spatial Audio đắm chìm.
+- Xem đồng thời trên 4 thiết bị, phù hợp cho cả gia đình.`,
     category: "Giải trí",
     accountType: "Netflix Premium",
   },
@@ -354,8 +419,11 @@ export const products: Product[] = [
     tags: ["ai", "grok"],
     image: grok1mImg,
     status: "in_stock",
-    description:
-      "SuperGrok 1 tháng: truy cập Grok-1.5 (xAI). AI chatbot của X (Twitter), khả năng trả lời real-time, khai thác dữ liệu mạng xã hội, tìm kiếm thông tin tức thì.",
+    description: `SuperGrok 1 tháng: AI Chatbot thời gian thực từ xAI.
+
+- Tích hợp dữ liệu trực tiếp từ nền tảng X (Twitter) để cập nhật tin tức nhanh nhất.
+- Chế độ 'Fun Mode' mang lại trải nghiệm trò chuyện hài hước và độc đáo.
+- Khả năng lập luận mạnh mẽ và xử lý hình ảnh (Multimodal).`,
     category: "AI",
     accountType: "SuperGrok",
   }

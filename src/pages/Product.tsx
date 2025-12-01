@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useCart } from "@/context/CartContext";
 import { toast } from "@/hooks/use-toast";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Sparkles } from "lucide-react";
 import InternalLinks from "@/components/seo/InternalLinks";
 
 const Product = () => {
@@ -27,35 +27,35 @@ const Product = () => {
   if (!product) return <div className="p-8">Không tìm thấy sản phẩm.</div>;
 
 
-const validate = () => {
-  if (!email.trim()) return "Vui lòng nhập email đăng nhập.";
-  if (!password.trim()) return "Vui lòng nhập mật khẩu.";
-  return "";
-};
+  const validate = () => {
+    if (!email.trim()) return "Vui lòng nhập email đăng nhập.";
+    if (!password.trim()) return "Vui lòng nhập mật khẩu.";
+    return "";
+  };
 
-const handleAdd = () => {
-  const err = validate();
-  if (err) {
-    setError(err);
-    return;
-  }
-  setError("");
-  // Store account credentials for order notification
-  localStorage.setItem('accountEmail', email);
-  localStorage.setItem('accountPassword', password);
-  if (twofa) localStorage.setItem('accountTwoFA', twofa);
-  add(product.id, 1, { email, password, twofa });
-  toast({
-    title: "Đã thêm vào giỏ hàng",
-    description: (
-      <div className="flex items-center gap-2">
-        <CheckCircle className="h-5 w-5 text-green-500" />
-        <span>{product.name} đã được thêm.</span>
-      </div>
-    )
-  });
-  navigate("/cart");
-};
+  const handleAdd = () => {
+    const err = validate();
+    if (err) {
+      setError(err);
+      return;
+    }
+    setError("");
+    // Store account credentials for order notification
+    localStorage.setItem('accountEmail', email);
+    localStorage.setItem('accountPassword', password);
+    if (twofa) localStorage.setItem('accountTwoFA', twofa);
+    add(product.id, 1, { email, password, twofa });
+    toast({
+      title: "Đã thêm vào giỏ hàng",
+      description: (
+        <div className="flex items-center gap-2">
+          <CheckCircle className="h-5 w-5 text-green-500" />
+          <span>{product.name} đã được thêm.</span>
+        </div>
+      )
+    });
+    navigate("/cart");
+  };
 
 
   const handleAddOnly = () => {
@@ -88,7 +88,7 @@ const handleAdd = () => {
         <meta name="keywords" content={`${product.name}, ${product.tags.join(', ')}, tài khoản ${product.category?.toLowerCase()}, mua ${product.name} giá rẻ, shop premium`} />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={`${import.meta.env.VITE_PUBLIC_SITE_URL}/product/${product.slug}`} />
-        
+
         {/* Open Graph */}
         <meta property="og:title" content={`${product.name} - Mua giá rẻ tại Shop Premium`} />
         <meta property="og:description" content={`Mua ${product.name} giá tốt nhất tại Shop Premium. Tài khoản chính chủ 100%, giao hàng tự động 24/7.`} />
@@ -102,13 +102,13 @@ const handleAdd = () => {
         <meta property="product:price:currency" content="VND" />
         <meta property="product:availability" content={product.status === "in_stock" ? "in stock" : "out of stock"} />
         <meta property="product:category" content={product.category || ""} />
-        
+
         {/* Twitter Cards */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={`${product.name} - Mua giá rẻ tại Shop Premium`} />
         <meta name="twitter:description" content={`Mua ${product.name} giá tốt nhất tại Shop Premium. Tài khoản chính chủ 100%, giao hàng tự động 24/7.`} />
         <meta name="twitter:image" content={`${import.meta.env.VITE_PUBLIC_SITE_URL}${product.image}`} />
-        
+
         {/* Product Schema */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -137,7 +137,7 @@ const handleAdd = () => {
             "url": `${import.meta.env.VITE_PUBLIC_SITE_URL}/product/${product.slug}`
           })}
         </script>
-        
+
         {/* Breadcrumb Schema */}
         <script type="application/ld+json">
           {JSON.stringify({
@@ -167,7 +167,7 @@ const handleAdd = () => {
         </script>
       </Helmet>
       <Header />
-  <main className="container mx-auto px-4 mt-6 min-h-[60vh] grid gap-6 md:grid-cols-12">
+      <main className="container mx-auto px-4 mt-6 min-h-[60vh] grid gap-6 md:grid-cols-12">
         <div className="md:col-span-5">
           <img src={product.image} alt={product.name} className="w-full rounded-xl" />
         </div>
@@ -190,9 +190,9 @@ const handleAdd = () => {
           <div className="space-y-2">
             <h3 className="font-semibold">Nhập thông tin tài khoản (bắt buộc)</h3>
             {/* <Input placeholder="Tên khách hàng" value={name} onChange={e=>setName(e.target.value)} /> */}
-            <Input placeholder="Email đăng nhập" value={email} onChange={e=>setEmail(e.target.value)} />
-            <Input placeholder="Mật khẩu" type="password" value={password} onChange={e=>setPassword(e.target.value)} />
-            <Input placeholder="Mã 2FA (nếu có)" value={twofa} onChange={e=>setTwofa(e.target.value)} />
+            <Input placeholder="Email đăng nhập" value={email} onChange={e => setEmail(e.target.value)} />
+            <Input placeholder="Mật khẩu" type="password" value={password} onChange={e => setPassword(e.target.value)} />
+            <Input placeholder="Mã 2FA (nếu có)" value={twofa} onChange={e => setTwofa(e.target.value)} />
             {error && <div className="text-sm text-red-500 pt-1">{error}</div>}
             <div className="text-sm text-muted-foreground">Hướng dẫn lấy mã sẽ hiển thị trong quá trình thanh toán.</div>
           </div>
@@ -207,54 +207,14 @@ const handleAdd = () => {
       {product.description && (
         <section className="container mx-auto px-4 mt-8 mb-12">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl font-bold mb-6">Mô tả chi tiết</h2>
-            <div className="bg-muted/30 rounded-lg p-6">
-              <p className="text-muted-foreground leading-relaxed">{product.description}</p>
+            <div className="flex items-center gap-2 mb-6">
+              <Sparkles className="w-6 h-6 text-yellow-500" />
+              <h2 className="text-2xl font-bold">Mô tả chi tiết</h2>
             </div>
-            
-            {/* Additional Product Info */}
-            <div className="grid gap-6 mt-8 md:grid-cols-2">
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold">Thông tin sản phẩm</h3>
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Danh mục:</span>
-                    <span className="font-medium">{product.category}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Loại tài khoản:</span>
-                    <span className="font-medium">{product.accountType}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Trạng thái:</span>
-                    <Badge variant={product.status === "in_stock" ? "default" : "destructive"}>
-                      {product.status === "in_stock" ? "Còn hàng" : "Hết hàng"}
-                    </Badge>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold">Cam kết dịch vụ</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                    <span>Tài khoản chính chủ 100%</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                    <span>Hỗ trợ kỹ thuật 24/7</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                    <span>Giao hàng tự động sau thanh toán</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                    <span>Bảo hành trong thời gian sử dụng</span>
-                  </li>
-                </ul>
-              </div>
+            <div className="bg-muted/20 rounded-xl p-6 md:p-8 border-2 border-primary/10 shadow-md">
+              <p className="text-lg text-foreground leading-loose whitespace-pre-line font-medium">
+                {product.description}
+              </p>
             </div>
           </div>
         </section>
