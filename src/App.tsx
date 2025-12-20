@@ -39,11 +39,11 @@ import { useLocation } from "react-router-dom";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-  
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [pathname]);
-  
+
   return null;
 };
 
@@ -56,46 +56,46 @@ const App = () => (
         <CartProvider>
           <AccountProvider>
             <AuthProvider>
-            <Toaster />
-            <Sonner />
-          <BrowserRouter
-            future={{
-              v7_startTransition: true,
-              v7_relativeSplatPath: true,
-            }}
-          >
-            <ScrollToTop />
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/product/:slug" element={<Product />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/checkout" element={<Checkout />} />
-              <Route path="/payment" element={<Payment />} />
-              <Route path="/search" element={<Search />} />
-              <Route path="/terms" element={<Terms />} />
-              <Route path="/privacy" element={<Privacy />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/thankyou" element={<ThankYou />} />
-              <Route path="/recruitment" element={<Recruitment />} />
-              <Route path="/collaborator/register" element={<CollaboratorRegister />} />
-              <Route path="/collaborator" element={<RequireCollaborator><CollaboratorLayout /></RequireCollaborator>}>
-                <Route index element={<CollaboratorInvite />} />
-              </Route>
-              <Route path="/invite" element={<Invite />} />
-              <Route path="/admin/login" element={<AdminLogin />} />
-              <Route path="/admin" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>
-                <Route index element={<AdminDashboard />} />
-                <Route path="accounts" element={<AdminAccounts />} />
-                <Route path="accounts/add" element={<AddAccount />} />
-                <Route path="accounts/edit/:id" element={<EditAccount />} />
-                <Route path="collaborators" element={<AdminCollaborators />} />
-                <Route path="password" element={<AdminChangePassword />} />
-              </Route>
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-            {/* Global floating helpers */}
-            <FloatingZalo zaloUrl="https://zalo.me/0344396798" />
-          </BrowserRouter>
+              <Toaster />
+              <Sonner />
+              <BrowserRouter
+                future={{
+                  v7_startTransition: true,
+                  v7_relativeSplatPath: true,
+                }}
+              >
+                <ScrollToTop />
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/product/:slug" element={<Product />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/checkout" element={<Checkout />} />
+                  <Route path="/payment" element={<Payment />} />
+                  <Route path="/search" element={<Search />} />
+                  <Route path="/terms" element={<Terms />} />
+                  <Route path="/privacy" element={<Privacy />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/thankyou" element={<ThankYou />} />
+                  <Route path="/recruitment" element={<Recruitment />} />
+                  <Route path="/collaborator/register" element={<CollaboratorRegister />} />
+                  <Route path="/collaborator" element={<RequireCollaborator><CollaboratorLayout /></RequireCollaborator>}>
+                    <Route index element={<CollaboratorInvite />} />
+                  </Route>
+                  <Route path="/invite" element={<Invite />} />
+                  <Route path="/admin/login" element={<AdminLogin />} />
+                  <Route path="/admin" element={<RequireAdmin><AdminLayout /></RequireAdmin>}>
+                    <Route index element={<AdminDashboard />} />
+                    <Route path="accounts" element={<AdminAccounts />} />
+                    <Route path="accounts/add" element={<AddAccount />} />
+                    <Route path="accounts/edit/:id" element={<EditAccount />} />
+                    <Route path="collaborators" element={<AdminCollaborators />} />
+                    <Route path="password" element={<AdminChangePassword />} />
+                  </Route>
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+                {/* Global floating helpers */}
+                <FloatingZalo zaloUrl="https://zalo.me/g/kqdtcp205" />
+              </BrowserRouter>
             </AuthProvider>
           </AccountProvider>
         </CartProvider>

@@ -43,7 +43,7 @@ const CollaboratorInvite = () => {
         if (error) return;
         const total = (data || []).reduce((sum: number, row: any) => sum + (Number(row.collaborator_commission) || 0), 0);
         setCommissionTotal(total);
-      } catch {}
+      } catch { }
     };
     fetchCommission();
   }, [ref]);
@@ -94,10 +94,10 @@ const CollaboratorInvite = () => {
   return (
     <div className="space-y-4 sm:space-y-6 p-4 sm:p-6">
       <h1 className="text-xl sm:text-2xl font-bold tracking-tight">Tạo mã mời</h1>
-      
+
       {/* Commission Table */}
       <CommissionTable />
-      
+
       <Card className="shadow-soft">
         <CardContent className="p-4 sm:p-6 space-y-4 sm:space-y-6">
           {loadingRef ? (
@@ -109,7 +109,7 @@ const CollaboratorInvite = () => {
                 <span className="truncate text-xs sm:text-sm">{inviteLink}</span>
                 <Button
                   variant="outline"
-                  onClick={async ()=>{ try { await navigator.clipboard.writeText(inviteLink); setCopied(true); setTimeout(()=>setCopied(false), 1200); } catch {} }}
+                  onClick={async () => { try { await navigator.clipboard.writeText(inviteLink); setCopied(true); setTimeout(() => setCopied(false), 1200); } catch { } }}
                   className="text-xs sm:text-sm px-3 py-2 h-8 sm:h-9 w-full sm:w-auto"
                 >
                   Copy
@@ -121,14 +121,14 @@ const CollaboratorInvite = () => {
                 <div className="text-lg sm:text-xl font-semibold">{commissionTotal === null ? 'Đang tải…' : commissionTotal.toLocaleString('vi-VN') + ' đ'}</div>
               </div>
               <div className="rounded-lg border p-3 bg-amber-50 text-amber-800">
-                <div className="text-xs sm:text-sm">Để nhận tiền hoa hồng, vui lòng liên hệ Zalo admin: <span className="font-semibold">0344396798</span>.</div>
+                <div className="text-xs sm:text-sm">Để nhận tiền hoa hồng, vui lòng liên hệ Zalo admin: <span className="font-semibold">0987328409</span> hoặc <span className="font-semibold">0344396798</span>.</div>
               </div>
             </div>
           ) : (
             <div className="space-y-4">
               {error ? <div className="text-xs sm:text-sm text-red-600">{error}</div> : null}
-              <Button 
-                onClick={handleCreate} 
+              <Button
+                onClick={handleCreate}
                 disabled={saving}
                 className="w-full sm:w-auto"
               >

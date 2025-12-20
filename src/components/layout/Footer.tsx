@@ -61,7 +61,7 @@ const Footer = () => {
               {/* Social/Contact */}
               <div className="flex items-center gap-3">
                 <a
-                  href="https://zalo.me/0344396798"
+                  href="https://zalo.me/g/kqdtcp205"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center hover:bg-blue-500/30 transition-colors group"
@@ -79,7 +79,15 @@ const Footer = () => {
               <div className="pt-4 space-y-2 text-sm text-slate-400">
                 <div className="flex items-center gap-2">
                   <Phone className="h-4 w-4 text-blue-400" />
+                  <span>0987.328.409</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Phone className="h-4 w-4 text-blue-400" />
                   <span>0344.396.798</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Mail className="h-4 w-4 text-purple-400" />
+                  <span>vuhiepktth@gmail.com</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="h-4 w-4 text-purple-400" />
