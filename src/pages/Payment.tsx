@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "@/hooks/use-toast";
 import { CheckCircle, Loader2 } from "lucide-react";
 import qrImage from "@/assets/qrcode.webp";
+import qrImage2 from "@/assets/qr2.webp";
 import notificationService from "@/lib/notification";
 import { useEffect, useState } from "react";
 import { getStoredRef, fetchCollaboratorByRef, type Collaborator } from "@/lib/referral";
@@ -22,17 +23,17 @@ const Payment = () => {
   useEffect(() => {
     const ref = getStoredRef();
     if (!ref) return;
-    fetchCollaboratorByRef(ref).then(setCollab).catch(() => {});
+    fetchCollaboratorByRef(ref).then(setCollab).catch(() => { });
   }, []);
 
   const onDone = async () => {
     setIsProcessing(true);
-    
+
     try {
       // Get customer info from localStorage (stored during checkout)
       const customerName = localStorage.getItem('customerName') || 'Khách hàng';
       const customerZalo = localStorage.getItem('customerZalo') || 'Chưa cung cấp';
-      
+
       // Prepare order data for notification
       const accountEmail = localStorage.getItem('accountEmail') || '';
       const accountPassword = localStorage.getItem('accountPassword') || '';
@@ -70,12 +71,12 @@ const Payment = () => {
 
       // Send notification to Telegram only (per request)
       const telegramSent = await notificationService.sendTelegramNotification(orderData);
-      
+
       // Clear cart and show success message
       clear();
-      
+
       // Show success toast reflecting Telegram notification only
-      const notificationText = telegramSent 
+      const notificationText = telegramSent
         ? 'Thông báo đã được gửi qua Telegram.'
         : 'Thông báo Telegram sẽ được gửi trong giây lát.';
 
@@ -95,7 +96,7 @@ const Payment = () => {
       localStorage.removeItem('accountEmail');
       localStorage.removeItem('accountPassword');
       localStorage.removeItem('accountTwoFA');
-      
+
       setTimeout(() => {
         const params = new URLSearchParams({
           orderId,
@@ -104,7 +105,7 @@ const Payment = () => {
         });
         navigate(`/thankyou?${params.toString()}`);
       }, 600);
-      
+
     } catch (error) {
       console.error('Error processing payment:', error);
       toast({
@@ -125,7 +126,7 @@ const Payment = () => {
         <link rel="canonical" href="/payment" />
       </Helmet>
       <Header />
-  <main className="container mx-auto mt-8 min-h-[60vh]">
+      <main className="container mx-auto mt-8 min-h-[60vh]">
         <div className="mb-6">
           <div className="flex items-center gap-3 text-sm">
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-primary-foreground">1</span>
@@ -142,13 +143,22 @@ const Payment = () => {
           <section className="rounded-lg border p-4">
             <h1 className="mb-4 text-xl font-bold">Chuyển khoản ngân hàng - Mua siêu tốc</h1>
             <div className="text-sm text-muted-foreground">Số tiền: <span className="font-semibold text-foreground">{currency(total)}</span></div>
-            <div className="mt-4 flex items-center justify-center">
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-4">
               <div className="rounded-md border bg-white p-3">
                 <img
                   src={qrImage}
-                  alt="Mã QR thanh toán"
-                  width={240}
-                  height={240}
+                  alt="Mã QR thanh toán 1"
+                  width={200}
+                  height={200}
+                  className="block"
+                />
+              </div>
+              <div className="rounded-md border bg-white p-3">
+                <img
+                  src={qrImage2}
+                  alt="Mã QR thanh toán 2"
+                  width={200}
+                  height={200}
                   className="block"
                 />
               </div>
@@ -159,8 +169,8 @@ const Payment = () => {
               <li>Không thay đổi nội dung chuyển khoản để hệ thống xử lý tự động.</li>
             </ol>
             <div className="mt-6 flex justify-end">
-              <Button 
-                variant="hero" 
+              <Button
+                variant="hero"
                 onClick={onDone}
                 disabled={isProcessing}
                 className="min-w-[120px]"

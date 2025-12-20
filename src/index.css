@@ -571,60 +571,205 @@
   .stagger-6 { animation-delay: 0.6s; }
 
   /* ================================================
-     ZALO FLOATING BUTTON
+     ZALO FLOATING BUTTON - PREMIUM EFFECTS
      ================================================ */
   
   @keyframes zaloFloat {
     0%, 100% {
-      transform: translateY(0) scale(1);
+      transform: translateY(0);
     }
     50% {
-      transform: translateY(-8px) scale(1.05);
+      transform: translateY(-8px);
     }
   }
 
-  @keyframes zaloPulse {
-    0%, 100% {
-      box-shadow: 0 0 0 0 rgba(0, 104, 255, 0.6);
+  @keyframes zaloBounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
     }
-    50% {
-      box-shadow: 0 0 0 15px rgba(0, 104, 255, 0);
+    40% {
+      transform: translateY(-12px);
+    }
+    60% {
+      transform: translateY(-6px);
     }
   }
 
-  @keyframes zaloRipple {
+  @keyframes zaloRingPulse1 {
     0% {
       transform: scale(1);
-      opacity: 1;
+      opacity: 0.8;
     }
     100% {
-      transform: scale(2.5);
+      transform: scale(2);
       opacity: 0;
     }
   }
 
-  .zalo-button {
-    @apply fixed bottom-6 right-6 z-50;
+  @keyframes zaloRingPulse2 {
+    0% {
+      transform: scale(1);
+      opacity: 0.6;
+    }
+    100% {
+      transform: scale(2.3);
+      opacity: 0;
+    }
+  }
+
+  @keyframes zaloRingPulse3 {
+    0% {
+      transform: scale(1);
+      opacity: 0.4;
+    }
+    100% {
+      transform: scale(2.6);
+      opacity: 0;
+    }
+  }
+
+  @keyframes zaloShine {
+    0% {
+      transform: translateX(-100%) rotate(45deg);
+    }
+    50%, 100% {
+      transform: translateX(100%) rotate(45deg);
+    }
+  }
+
+  @keyframes zaloGlow {
+    0%, 100% {
+      box-shadow: 
+        0 0 20px rgba(0, 104, 255, 0.4),
+        0 0 40px rgba(0, 104, 255, 0.2),
+        0 0 60px rgba(0, 104, 255, 0.1);
+    }
+    50% {
+      box-shadow: 
+        0 0 30px rgba(0, 104, 255, 0.6),
+        0 0 60px rgba(0, 104, 255, 0.4),
+        0 0 90px rgba(0, 104, 255, 0.2);
+    }
+  }
+
+  @keyframes zaloSpin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .zalo-floating-btn {
+    @apply relative inline-flex items-center justify-center;
     @apply w-14 h-14 rounded-full;
-    @apply bg-gradient-to-r from-blue-500 to-blue-600;
-    @apply flex items-center justify-center;
-    @apply shadow-xl shadow-blue-500/40;
     @apply cursor-pointer;
-    @apply transition-all duration-300;
-    animation: zaloFloat 3s ease-in-out infinite, zaloPulse 2s ease-in-out infinite;
+    @apply transition-all duration-300 ease-out;
+    animation: zaloFloat 3s ease-in-out infinite, zaloGlow 2s ease-in-out infinite;
   }
 
-  .zalo-button:hover {
-    @apply scale-110;
-    @apply shadow-2xl shadow-blue-500/50;
-    animation: none;
+  .zalo-floating-btn:hover {
+    transform: scale(1.15);
+    animation: zaloBounce 1s ease-in-out;
   }
 
-  .zalo-button::before {
-    content: '';
+  .zalo-floating-btn:active {
+    transform: scale(0.95);
+  }
+
+  /* Inner button with gradient */
+  .zalo-inner {
     @apply absolute inset-0 rounded-full;
-    @apply bg-blue-400/50;
-    animation: zaloRipple 2s ease-out infinite;
+    @apply flex items-center justify-center;
+    background: linear-gradient(135deg, #0068FF 0%, #0052CC 50%, #003D99 100%);
+    box-shadow: 
+      inset 0 2px 10px rgba(255, 255, 255, 0.3),
+      inset 0 -2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .zalo-floating-btn:hover .zalo-inner {
+    background: linear-gradient(135deg, #1a7aff 0%, #0068FF 50%, #0052CC 100%);
+  }
+
+  /* Ripple rings */
+  .zalo-ring {
+    @apply absolute inset-0 rounded-full;
+    border: 2px solid rgba(0, 104, 255, 0.6);
+  }
+
+  .zalo-ring-1 {
+    animation: zaloRingPulse1 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  .zalo-ring-2 {
+    animation: zaloRingPulse2 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    animation-delay: 0.5s;
+  }
+
+  .zalo-ring-3 {
+    animation: zaloRingPulse3 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    animation-delay: 1s;
+  }
+
+  .zalo-floating-btn:hover .zalo-ring {
+    animation-play-state: paused;
+    opacity: 0;
+  }
+
+  /* Shine effect */
+  .zalo-shine {
+    @apply absolute inset-0 rounded-full overflow-hidden;
+  }
+
+  .zalo-shine::before {
+    content: '';
+    @apply absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.4) 50%,
+      transparent 70%
+    );
+    animation: zaloShine 3s ease-in-out infinite;
+  }
+
+  /* Spinning border on hover */
+  .zalo-floating-btn::before {
+    content: '';
+    @apply absolute rounded-full;
+    inset: -3px;
+    background: conic-gradient(
+      from 0deg,
+      #0068FF,
+      #00D4FF,
+      #0068FF,
+      #00D4FF,
+      #0068FF
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .zalo-floating-btn:hover::before {
+    opacity: 1;
+    animation: zaloSpin 2s linear infinite;
+  }
+
+  .zalo-floating-btn::after {
+    content: '';
+    @apply absolute rounded-full bg-background;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .zalo-floating-btn:hover::after {
+    opacity: 0;
   }
 
   /* ================================================
