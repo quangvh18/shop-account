@@ -20,6 +20,7 @@ import canvaImg from "@/assets/canva-pro-1y.webp";
 import googleAiUltraImg from "@/assets/google-ai-ultra.webp"
 import githubImg from "@/assets/github-student-park.webp"
 import jetbrainsImg from "@/assets/jetbrains-1y.webp"
+import lovableImg from "@/assets/lovable-2m.webp"
 
 export type Product = {
   id: string;
@@ -47,15 +48,37 @@ export type Product = {
   | "Microsoft"
   | "Canva Pro"
   | "GitHub Copilot"
-  | "JetBrains";
+  | "JetBrains"
+  | "Lovable";
 };
 
 export const products: Product[] = [
   {
+    id: "lovable-2m",
+    slug: "lovable-2m",
+    name: "Lovable Pro 2 tháng",
+    price: 90000,
+    originalPrice: 1250000,
+    tags: ["lovable", "ai", "frontend"],
+    image: lovableImg,
+    status: "in_stock",
+    description: `Gói Lovable Pro sử dụng trong 2 tháng, phù hợp cho lập trình viên và người làm frontend muốn xây dựng sản phẩm nhanh bằng AI.
+
+Quyền lợi nổi bật:
+- Truy cập Lovable Pro trong 2 tháng
+- Tạo giao diện frontend nhanh từ prompt (React / Next.js)
+- Hỗ trợ sinh UI, component, layout và logic cơ bản
+- Phù hợp cho prototype, MVP, landing page, side project
+- Kích hoạt nhanh, sử dụng độc lập`
+    ,
+    category: "Development",
+    accountType: "Lovable",
+  },
+  {
     id: "github-copilot-2y",
     slug: "github-copilot-2y",
     name: "GitHub Copilot Student Pack 2 năm",
-    price: 960000,
+    price: 560000,
     originalPrice: 6000000,
     tags: ["github", "coding", "ai"],
     image: githubImg,
