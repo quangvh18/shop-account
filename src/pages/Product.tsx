@@ -361,7 +361,7 @@ const Product = () => {
                 <p className="text-xs text-muted-foreground">Liên hệ Zalo để được tư vấn miễn phí</p>
               </div>
               <a
-                href="https://zalo.me/0344396798"
+                href="https://zalo.me/g/fkawmh287"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 rounded-lg bg-blue-500 text-white text-sm font-medium hover:bg-blue-600 transition-colors"

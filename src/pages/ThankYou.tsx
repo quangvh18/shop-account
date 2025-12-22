@@ -134,7 +134,7 @@ const ThankYou = () => {
               className="flex items-center gap-2"
             >
               <a 
-                href="https://zalo.me/0344396798" 
+                href="https://zalo.me/g/fkawmh287" 
                 target="_blank" 
                 rel="noopener noreferrer"
               >

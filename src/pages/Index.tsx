@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import Footer from "@/components/layout/Footer";
 import { ArrowRight, Sparkles, TrendingUp, Users, Star, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import AnnouncementBar from "@/components/marketing/AnnouncementBar";
 
 const stats = [
   { number: "5000+", label: "Khách hàng tin tưởng", icon: Users, gradient: "from-blue-500 to-cyan-500", bgGradient: "from-blue-500/20 to-cyan-500/20" },
@@ -68,7 +69,7 @@ const Index = () => {
               "availableLanguage": "Vietnamese"
             },
             "sameAs": [
-              "https://zalo.me/0344396798"
+              "https://zalo.me/g/fkawmh287"
             ],
             "foundingDate": "2024",
             "numberOfEmployees": "1-10",
@@ -105,6 +106,8 @@ const Index = () => {
       </Helmet>
 
       <Header />
+
+      <AnnouncementBar />
 
       <main className="flex-1 container mx-auto px-4">
         <h1 className="sr-only">Shop Premium - Cửa hàng tài khoản số uy tín #1 Việt Nam</h1>
@@ -210,7 +213,7 @@ const Index = () => {
               </div>
 
               <a
-                href="https://zalo.me/0344396798"
+                href="https://zalo.me/g/fkawmh287"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 px-6 py-3 rounded-xl bg-white text-gray-900 font-semibold hover:bg-gray-100 transition-colors shadow-xl hover:shadow-2xl hover:scale-105 duration-300"
