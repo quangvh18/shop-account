@@ -160,7 +160,8 @@ const Search = () => {
                           {c === "Video Editor" && "🎬"}
                           {c === "Office" && "💼"}
                           {c === "Design" && "🎨"}
-                          {c === "Development" && "💻"}
+                          {c === "Lập trình" && "💻"}
+                          {c === "Bảo mật" && "🔒"}
                           {" "}{c}
                         </SelectItem>
                       ))}

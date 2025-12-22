@@ -24,7 +24,7 @@ const Contact = () => (
         </div>
         <div className="text-sm text-muted-foreground">
           <h2 className="font-semibold mb-2">Thông tin liên hệ</h2>
-          <p>Zalo: <a href="https://zalo.me/g/kqdtcp205" className="underline text-blue-600" target="_blank" rel="noopener noreferrer">Nhóm hỗ trợ</a></p>
+          <p>Zalo: <a href="https://zalo.me/g/fkawmh287" className="underline text-blue-600" target="_blank" rel="noopener noreferrer">Nhóm hỗ trợ</a></p>
           <p>Số Zalo: <span className="font-medium">0987.328.409</span> | <span className="font-medium">0344.396.798</span></p>
           <p>Email: <a href="mailto:vuhiepktth@gmail.com" className="underline text-blue-600">vuhiepktth@gmail.com</a> | <a href="mailto:vuhuyquang2k@gmail.com" className="underline text-blue-600">vuhuyquang2k@gmail.com</a></p>
         </div>

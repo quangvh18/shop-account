@@ -61,7 +61,7 @@ const Footer = () => {
               {/* Social/Contact */}
               <div className="flex items-center gap-3">
                 <a
-                  href="https://zalo.me/g/kqdtcp205"
+                  href="https://zalo.me/g/fkawmh287"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center hover:bg-blue-500/30 transition-colors group"
@@ -134,7 +134,7 @@ const Footer = () => {
                   {[
                     { label: "Video Editor", to: "/search?category=Video%20Editor" },
                     { label: "Học tập", to: "/search?category=Học%20tập" },
-                    { label: "VPN & Bảo mật", to: "/search?category=Bảo%20mật" },
+                    { label: "VPN & Bảo mật", to: "/search?category=B%E1%BA%A3o%20m%E1%BA%ADt" },
                     { label: "Office", to: "/search?category=Office" },
                   ].map(({ label, to }) => (
                     <li key={label}>

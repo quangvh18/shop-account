@@ -3,7 +3,7 @@ import hero1 from "@/assets/hero-capcut.webp";
 import hero2 from "@/assets/hero-youtube.webp";
 import hero3 from "@/assets/hero-netflix.webp";
 import { Link } from "react-router-dom";
-import { Gamepad2, GraduationCap, Brain, Video, Music, ChevronRight, Zap, TrendingUp, Shield, Clock } from "lucide-react";
+import { Gamepad2, GraduationCap, Brain, Video, Music, ChevronRight, Zap, TrendingUp, Shield, Clock, Code } from "lucide-react";
 import designBg from "@/assets/thiet-ke.webp";
 import aiBg from "@/assets/ai.webp";
 import Autoplay from "embla-carousel-autoplay";
@@ -19,8 +19,8 @@ const categories = [
   { label: "AI & ChatGPT", icon: Brain, to: "/search?category=AI", color: "from-purple-500 to-pink-500", bgColor: "bg-purple-50" },
   { label: "Giải trí", icon: Gamepad2, to: "/search?category=Gi%E1%BA%A3i%20tr%C3%AD", color: "from-blue-500 to-cyan-500", bgColor: "bg-blue-50" },
   { label: "Âm nhạc", icon: Music, to: "/search?category=%C3%82m%20nh%E1%BA%A1c", color: "from-green-500 to-emerald-500", bgColor: "bg-green-50" },
-  { label: "Học tập", icon: GraduationCap, to: "/search?category=H%E1%BB%8Dc%20t%E1%BA%ADp", color: "from-yellow-500 to-orange-500", bgColor: "bg-yellow-50" },
   { label: "Video Editor", icon: Video, to: "/search?category=Video%20Editor", color: "from-red-500 to-pink-500", bgColor: "bg-red-50" },
+  { label: "Bảo mật", icon: Shield, to: "/search?category=B%E1%BA%A3o%20m%E1%BA%ADt", color: "from-teal-500 to-cyan-500", bgColor: "bg-teal-50" },
 ];
 
 const features = [
@@ -38,35 +38,37 @@ const HeroSection = () => {
   return (
     <section className="mt-4 space-y-6">
       {/* Main Hero Grid */}
-      <div className="grid grid-cols-12 gap-4 lg:gap-6 items-stretch md:h-[360px]">
+      <div className="grid grid-cols-12 gap-4 lg:gap-6 md:h-[360px]">
         {/* Left categories - hidden on mobile */}
         <aside className="hidden md:block md:col-span-3 h-full animate-fade-in">
-          <nav className="rounded-2xl border border-border/50 bg-card/80 backdrop-blur-sm p-3 h-full flex flex-col shadow-lg shadow-black/5">
-            <div className="flex items-center gap-2 mb-3 pb-2 border-b">
-              <div className="w-7 h-7 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
-                <span className="text-white text-xs font-bold">📦</span>
+          <nav className="rounded-2xl border border-border/50 bg-card/80 backdrop-blur-sm p-3 h-full flex flex-col justify-between shadow-lg shadow-black/5">
+            <div>
+              <div className="flex items-center gap-2 mb-2.5 pb-2 border-b">
+                <div className="w-7 h-7 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
+                  <span className="text-white text-xs font-bold">📦</span>
+                </div>
+                <h2 className="font-bold text-xs gradient-text">DANH MỤC</h2>
               </div>
-              <h2 className="font-bold text-xs gradient-text">DANH MỤC</h2>
+              <ul className="space-y-1">
+                {categories.map(({ label, icon: Icon, to, bgColor }, index) => (
+                  <li key={label} style={{ animationDelay: `${index * 0.1}s` }} className="animate-fade-in opacity-0" >
+                    <Link
+                      to={to}
+                      className="flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-muted/50 transition-colors group"
+                    >
+                      <div className={`w-7 h-7 rounded-lg ${bgColor} flex items-center justify-center transition-all duration-300 group-hover:scale-110`}>
+                        <Icon className="h-3.5 w-3.5" />
+                      </div>
+                      <span className="font-medium text-xs flex-1">{label}</span>
+                      <ChevronRight className="h-3 w-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-primary" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="space-y-0.5 flex-1">
-              {categories.map(({ label, icon: Icon, to, bgColor }, index) => (
-                <li key={label} style={{ animationDelay: `${index * 0.1}s` }} className="animate-fade-in opacity-0" >
-                  <Link
-                    to={to}
-                    className="flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-muted/50 transition-colors group"
-                  >
-                    <div className={`w-7 h-7 rounded-lg ${bgColor} flex items-center justify-center transition-all duration-300 group-hover:scale-110`}>
-                      <Icon className="h-3.5 w-3.5" />
-                    </div>
-                    <span className="font-medium text-xs flex-1">{label}</span>
-                    <ChevronRight className="h-3 w-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-primary" />
-                  </Link>
-                </li>
-              ))}
-            </ul>
 
             {/* Quick Stats */}
-            <div className="mt-2 pt-2 border-t">
+            <div className="pt-2 border-t">
               <div className="grid grid-cols-2 gap-1.5">
                 <div className="text-center p-2 rounded-lg bg-gradient-to-br from-blue-500/10 to-purple-500/10">
                   <div className="text-sm font-bold gradient-text">500+</div>
@@ -94,12 +96,12 @@ const HeroSection = () => {
             >
               <CarouselContent className="-ml-0 h-full">
                 {slides.map((s, i) => (
-                  <CarouselItem key={i} className="pl-0 relative">
+                  <CarouselItem key={i} className="pl-0 relative h-full">
                     <img
                       src={s.img}
                       alt={s.alt}
                       loading="eager"
-                      className="w-full h-[200px] md:h-[360px] object-cover"
+                      className="w-full h-full object-cover"
                     />
                     {/* Overlay gradient */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -128,11 +130,11 @@ const HeroSection = () => {
         </div>
 
         {/* Right banners - hidden on mobile */}
-        <aside className="hidden md:grid md:col-span-3 gap-4 h-full animate-fade-in stagger-2">
+        <aside className="hidden md:flex md:flex-col md:col-span-3 gap-4 h-full animate-fade-in stagger-2">
           <h2 className="sr-only">Sản phẩm khuyến mại</h2>
           <Link
-            to="/search?category=B%E1%BA%A3o%20m%E1%BA%ADt"
-            className="relative rounded-2xl overflow-hidden group shadow-lg shadow-black/5 border border-border/50"
+            to="/search?category=Design"
+            className="flex-1 relative rounded-2xl overflow-hidden group shadow-lg shadow-black/5 border border-border/50"
           >
             <img src={designBg} alt="VPN" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -145,7 +147,7 @@ const HeroSection = () => {
 
           <Link
             to="/search?category=AI"
-            className="relative rounded-2xl overflow-hidden group shadow-lg shadow-black/5 border border-border/50"
+            className="flex-1 relative rounded-2xl overflow-hidden group shadow-lg shadow-black/5 border border-border/50"
           >
             <img src={aiBg} alt="AI" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />

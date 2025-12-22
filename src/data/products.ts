@@ -21,6 +21,7 @@ import googleAiUltraImg from "@/assets/google-ai-ultra.webp"
 import githubImg from "@/assets/github-student-park.webp"
 import jetbrainsImg from "@/assets/jetbrains-1y.webp"
 import lovableImg from "@/assets/lovable-2m.webp"
+import passwordIndividualImg from "@/assets/password-individual-1y.webp"
 
 export type Product = {
   id: string;
@@ -45,38 +46,41 @@ export type Product = {
   | "SuperGrok"
   | "Google One"
   | "Perplexity Pro"
-  | "Microsoft"
+  | "Microsoft 365"
   | "Canva Pro"
-  | "GitHub Copilot"
+  | "GitHub Copilot Pro"
   | "JetBrains"
-  | "Lovable";
+  | "Lovable Pro"
+  | "1Password Individual";
 };
 
 export const products: Product[] = [
   {
-    id: "lovable-2m",
-    slug: "lovable-2m",
-    name: "Lovable Pro 2 tháng",
-    price: 90000,
-    originalPrice: 1250000,
-    tags: ["lovable", "ai", "frontend"],
-    image: lovableImg,
+    id: "1password-individual-1y",
+    slug: "1password-individual-1y",
+    name: "1Password Individual 1 năm",
+    price: 350000,
+    originalPrice: 860000,
+    tags: ["1password", "password", "security"],
+    image: passwordIndividualImg,
     status: "in_stock",
-    description: `Gói Lovable Pro sử dụng trong 2 tháng, phù hợp cho lập trình viên và người làm frontend muốn xây dựng sản phẩm nhanh bằng AI.
+    description: `Gói 1Password Individual 1 năm, phù hợp cho người dùng muốn bảo mật tài khoản và thông tin cá nhân.
 
 Quyền lợi nổi bật:
-- Truy cập Lovable Pro trong 2 tháng
-- Tạo giao diện frontend nhanh từ prompt (React / Next.js)
-- Hỗ trợ sinh UI, component, layout và logic cơ bản
-- Phù hợp cho prototype, MVP, landing page, side project
-- Kích hoạt nhanh, sử dụng độc lập`
-    ,
-    category: "Development",
-    accountType: "Lovable",
+- Truy cập 1Password Individual trong 1 năm
+- Lưu trữ không giới hạn mật khẩu, thẻ tín dụng, ghi chú bảo mật
+- Đồng bộ trên mọi thiết bị (Windows, Mac, iOS, Android)
+- Tự động điền mật khẩu trên trình duyệt và ứng dụng
+- Watchtower: Cảnh báo mật khẩu yếu, bị rò rỉ hoặc lỗi thời
+- Kho lưu trữ riêng tư với mã hóa end-to-end
+- Hỗ trợ xác thực 2 yếu tố (2FA)
+- Chế độ du lịch: Ẩn vault nhạy cảm khi qua biên giới`,
+    category: "Bảo mật",
+    accountType: "1Password Individual",
   },
   {
-    id: "github-copilot-2y",
-    slug: "github-copilot-2y",
+    id: "github-copilot-pro-2y",
+    slug: "github-copilot-pro-2y",
     name: "GitHub Copilot Student Pack 2 năm",
     price: 560000,
     originalPrice: 6000000,
@@ -90,8 +94,8 @@ Quyền lợi nổi bật:
 - GitHub Student Developer Pack partner offers cho bạn rất nhiều lợi ích đến từ các partners của GitHub như VS Code, Microsoft Azure, Heroku, MongoDB...
 
 - GitHub Campus đào tạo chuyên nghiệp cho các ứng viên đủ điều kiện.`,
-    category: "Development",
-    accountType: "GitHub Copilot",
+    category: "Lập trình",
+    accountType: "GitHub Copilot Pro",
   },
   {
     id: "jetbrains-1y",
@@ -107,7 +111,7 @@ Quyền lợi nổi bật:
 - Hỗ trợ đa ngôn ngữ, refactoring thông minh.
 - Tích hợp AI Assistant giúp tăng tốc độ coding.
 - Công cụ debug và profile hiệu năng mạnh mẽ.`,
-    category: "Development",
+    category: "Lập trình",
     accountType: "JetBrains",
   },
   {
@@ -210,7 +214,7 @@ Quyền lợi nổi bật:
 - Tặng kèm 1TB lưu trữ đám mây OneDrive với tính năng bảo mật Personal Vault.
 - Hỗ trợ các tính năng AI và mẫu thiết kế cao cấp trong ứng dụng.`,
     category: "Office",
-    accountType: "Microsoft",
+    accountType: "Microsoft 365",
   },
   {
     id: "chatgpt-plus-3m",

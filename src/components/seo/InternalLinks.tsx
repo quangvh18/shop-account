@@ -13,7 +13,7 @@ const InternalLinks = ({ currentProductId, limit = 4 }: InternalLinksProps) => {
     .slice(0, limit);
 
   const siteUrl = import.meta.env.VITE_PUBLIC_SITE_URL || '';
-  
+
   const popularKeywords = [
     { text: "ChatGPT Plus", url: "/search?q=chatgpt" },
     { text: "YouTube Premium", url: "/search?q=youtube" },
@@ -92,6 +92,18 @@ const InternalLinks = ({ currentProductId, limit = 4 }: InternalLinksProps) => {
             className="text-sm text-blue-600 hover:text-blue-800 hover:underline"
           >
             Video Editor
+          </Link>
+          <Link
+            to="/search?category=bảo mật"
+            className="text-sm text-blue-600 hover:text-blue-800 hover:underline"
+          >
+            Bảo mật
+          </Link>
+          <Link
+            to="/search?category=lập trình"
+            className="text-sm text-blue-600 hover:text-blue-800 hover:underline"
+          >
+            Lập trình
           </Link>
         </div>
       </div>

@@ -94,7 +94,7 @@ const App = () => (
                   <Route path="*" element={<NotFound />} />
                 </Routes>
                 {/* Global floating helpers */}
-                <FloatingZalo zaloUrl="https://zalo.me/g/kqdtcp205" />
+                <FloatingZalo zaloUrl="https://zalo.me/g/fkawmh287" />
               </BrowserRouter>
             </AuthProvider>
           </AccountProvider>
