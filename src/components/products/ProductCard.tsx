@@ -30,7 +30,7 @@ const ProductCard = ({ product }: { product: Product }) => {
               src={product.image}
               alt={product.name}
               loading="lazy"
-              className="w-full h-36 sm:h-40 lg:h-44 object-cover transition-all duration-500 group-hover:scale-110"
+              className="w-full h-32 sm:h-36 lg:h-40 object-cover transition-all duration-500 group-hover:scale-110"
             />
             {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -68,7 +68,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         </Link>
 
         {/* Product Info */}
-        <div className="p-4 space-y-3 flex flex-col flex-1 bg-gradient-to-b from-transparent to-muted/20">
+        <div className="p-3 space-y-2 flex flex-col flex-1 bg-gradient-to-b from-transparent to-muted/20">
           {/* Category tag */}
           {product.category && (
             <div className="flex items-center gap-1">
@@ -86,11 +86,13 @@ const ProductCard = ({ product }: { product: Product }) => {
           </div>
 
           {/* Rating */}
-          <div className="flex items-center gap-1">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className={`h-3 w-3 ${i < filledStars ? 'text-yellow-400 fill-yellow-400' : 'text-gray-200 fill-gray-200'}`} />
-            ))}
-            <span className="text-xs text-muted-foreground ml-1">({rating.toFixed(1)}) · {reviewCount}</span>
+          <div className="flex items-center gap-1 leading-none">
+            <div className="flex items-center">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className={`h-2.5 w-2.5 ${i < filledStars ? 'text-yellow-400 fill-yellow-400' : 'text-gray-200 fill-gray-200'}`} />
+              ))}
+            </div>
+            <span className="text-[10px] text-muted-foreground ml-1">({rating.toFixed(1)})</span>
           </div>
 
           {/* Price */}
@@ -113,8 +115,8 @@ const ProductCard = ({ product }: { product: Product }) => {
           </div>
 
           {/* Action Button */}
-          <div className="pt-2 mt-auto">
-            <Button asChild className="w-full btn-hero h-10 text-sm font-semibold">
+          <div className="pt-1 mt-auto">
+            <Button asChild className="w-full btn-hero h-9 text-xs font-semibold">
               <Link to={`/product/${product.slug}`} className="flex items-center justify-center gap-2">
                 <ShoppingCart className="h-4 w-4" />
                 Xem chi tiết

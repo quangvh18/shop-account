@@ -267,7 +267,7 @@ const Search = () => {
 
             {/* Products */}
             {filtered.length > 0 ? (
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
                 {filtered.map((p, index) => (
                   <div
                     key={p.id}
