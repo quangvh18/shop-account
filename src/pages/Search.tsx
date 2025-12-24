@@ -4,6 +4,7 @@ import Footer from "@/components/layout/Footer";
 import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { products, Product } from "@/data/products";
+import { getAccountTypeLogo } from "@/data/accountLogos";
 import ProductCard from "@/components/products/ProductCard";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -162,6 +163,7 @@ const Search = () => {
                           {c === "Design" && "🎨"}
                           {c === "Lập trình" && "💻"}
                           {c === "Bảo mật" && "🔒"}
+                          {c === "Productivity" && "📊"}
                           {" "}{c}
                         </SelectItem>
                       ))}
@@ -177,10 +179,19 @@ const Search = () => {
                       <SelectValue placeholder="Tất cả" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="all">Tất cả loại</SelectItem>
-                      {types.map(t => (
-                        <SelectItem key={t} value={t}>{t}</SelectItem>
-                      ))}
+                      <SelectItem value="all">🏷️ Tất cả loại</SelectItem>
+                      {types.map(t => {
+                        const logo = getAccountTypeLogo(t);
+                        const Icon = logo?.icon;
+                        return (
+                          <SelectItem key={t} value={t}>
+                            <span className="flex items-center gap-2">
+                              {Icon && <Icon className="w-4 h-4" style={{ color: logo?.color }} />}
+                              {t}
+                            </span>
+                          </SelectItem>
+                        );
+                      })}
                     </SelectContent>
                   </Select>
                 </div>

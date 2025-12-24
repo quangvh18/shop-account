@@ -3,7 +3,7 @@ import hero1 from "@/assets/hero-capcut.webp";
 import hero2 from "@/assets/hero-youtube.webp";
 import hero3 from "@/assets/hero-netflix.webp";
 import { Link } from "react-router-dom";
-import { Gamepad2, GraduationCap, Brain, Video, Music, ChevronRight, Zap, TrendingUp, Shield, Clock, Code } from "lucide-react";
+import { Gamepad2, GraduationCap, Brain, Video, Music, ChevronRight, Zap, TrendingUp, Shield, Clock, Code, Briefcase } from "lucide-react";
 import designBg from "@/assets/thiet-ke.webp";
 import aiBg from "@/assets/ai.webp";
 import Autoplay from "embla-carousel-autoplay";
@@ -21,6 +21,7 @@ const categories = [
   { label: "Âm nhạc", icon: Music, to: "/search?category=%C3%82m%20nh%E1%BA%A1c", color: "from-green-500 to-emerald-500", bgColor: "bg-green-50" },
   { label: "Video Editor", icon: Video, to: "/search?category=Video%20Editor", color: "from-red-500 to-pink-500", bgColor: "bg-red-50" },
   { label: "Bảo mật", icon: Shield, to: "/search?category=B%E1%BA%A3o%20m%E1%BA%ADt", color: "from-teal-500 to-cyan-500", bgColor: "bg-teal-50" },
+  { label: "Productivity", icon: Briefcase, to: "/search?category=Productivity", color: "from-orange-500 to-amber-500", bgColor: "bg-orange-50" },
 ];
 
 const features = [
