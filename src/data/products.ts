@@ -22,6 +22,7 @@ import githubImg from "@/assets/github-student-park.webp"
 import jetbrainsImg from "@/assets/jetbrains-1y.webp"
 import lovableImg from "@/assets/lovable-2m.webp"
 import passwordIndividualImg from "@/assets/password-individual-1y.webp"
+import notionPlusImg from "@/assets/notion-plus-ai-1y.webp"
 
 export type Product = {
   id: string;
@@ -51,10 +52,66 @@ export type Product = {
   | "GitHub Copilot Pro"
   | "JetBrains"
   | "Lovable Pro"
-  | "1Password Individual";
+  | "1Password Individual"
+  | "Notion Plus"
+  ;
 };
 
 export const products: Product[] = [
+  {
+    id: "notion-plus-1y",
+    slug: "notion-plus-1y",
+    name: "Notion Plus 1 năm",
+    price: 140000,
+    originalPrice: 1280000,
+    tags: ["notion", "productivity"],
+    image: notionPlusImg,
+    status: "in_stock",
+    description: `Gói Notion Plus 1 năm, nâng cấp không gian làm việc cá nhân với nhiều tính năng vượt trội.
+
+Quyền lợi nổi bật:
+- Truy cập Notion Plus trong 1 năm
+- Upload file không giới hạn (vs 5MB ở Free)
+- Lịch sử phiên bản không giới hạn (vs 7 ngày ở Free)
+- Mời không giới hạn số lượng guests
+- Sync trên mọi thiết bị (Web, Desktop, Mobile)
+- 100+ template chuyên nghiệp sẵn có
+- Tích hợp với Google Drive, Slack, GitHub
+- Advanced permissions và sharing options
+- Database với views linh hoạt (Table, Board, Calendar, Gallery)
+- AI Assistant để viết, chỉnh sửa và tóm tắt nội dung
+- Custom domain cho public pages
+- Priority customer support 24/7`,
+    category: "Productivity",
+    accountType: "Notion Plus",
+  },
+  {
+    id: "lovable-pro-2m",
+    slug: "lovable-pro-2m",
+    name: "Lovable Pro 2 tháng",
+    price: 80000,
+    originalPrice: 1350000,
+    tags: ["lovable", "frontend"],
+    image: lovableImg,
+    status: "in_stock",
+    description: `Gói Lovable Pro 2 tháng, giải pháp tối ưu cho việc phát triển ứng dụng web nhanh chóng với AI.
+
+Quyền lợi nổi bật:
+- Truy cập Lovable Pro trong 2 tháng
+- Tạo và deploy ứng dụng web không giới hạn
+- AI code generation với Claude Sonnet 4
+- Chỉnh sửa code trực tiếp trong editor
+- Tự động deploy lên hosting miễn phí
+- Tích hợp Supabase để quản lý database
+- Responsive design tự động cho mọi thiết bị
+- Custom domain và SSL certificate miễn phí
+- Component library phong phú (React, Tailwind CSS)
+- Export source code đầy đủ
+- Preview realtime khi phát triển
+- Hỗ trợ TypeScript và modern web standards`,
+    category: "Lập trình",
+    accountType: "Lovable Pro",
+  },
   {
     id: "1password-individual-1y",
     slug: "1password-individual-1y",
