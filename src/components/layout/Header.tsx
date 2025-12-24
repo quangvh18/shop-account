@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { ShoppingCart, UserRound, Menu, Flame, PercentCircle, BriefcaseBusiness, Search, Sparkles, Crown } from "lucide-react";
+import { ShoppingCart, Package, Menu, Flame, PercentCircle, BriefcaseBusiness, Search, Sparkles, Crown } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
@@ -35,8 +35,8 @@ const Header = () => {
 
   return (
     <header className={`sticky top-0 z-40 transition-all duration-300 ${isScrolled
-        ? "glass shadow-lg shadow-black/5"
-        : "bg-transparent"
+      ? "glass shadow-lg shadow-black/5"
+      : "bg-transparent"
       }`}>
       {/* Top banner - hidden on mobile */}
       <div className="hidden lg:block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 text-white">
@@ -118,7 +118,7 @@ const Header = () => {
           {/* Desktop navigation */}
           <Button variant="ghost" className="hidden lg:inline-flex gap-2 font-medium hover:bg-primary/5 hover:text-primary" asChild>
             <Link to="/search">
-              <UserRound className="h-4 w-4" />
+              <Package className="h-4 w-4" />
               Sản phẩm
             </Link>
           </Button>
@@ -212,7 +212,7 @@ const Header = () => {
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-primary/5 transition-colors"
                   >
-                    <UserRound className="h-5 w-5 text-primary" />
+                    <Package className="h-5 w-5 text-primary" />
                     <span className="font-medium">Tất cả sản phẩm</span>
                   </Link>
 

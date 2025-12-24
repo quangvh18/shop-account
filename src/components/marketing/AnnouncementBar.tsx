@@ -7,10 +7,10 @@ interface Announcement {
 }
 
 const announcements: Announcement[] = [
-    { icon: Gift, text: "Giảm giá 50%", highlight: "tất cả sản phẩm AI Tools!" },
-    { icon: Zap, text: "Giao hàng tự động 24/7", highlight: "" },
+    { icon: Gift, text: "Ưu đãi Giáng sinh:", highlight: "Tặng Canva Pro 1 năm cho khách hàng đã mua hàng!" },
     { icon: Star, text: "Bảo hành chính hãng", highlight: "lên đến 12 tháng" },
     { icon: Sparkles, text: "Ưu đãi đặc biệt", highlight: "cho khách hàng mới!" },
+    { icon: Gift, text: "Giảm giá 50%", highlight: "tất cả sản phẩm AI Tools!" },
 ];
 
 const AnnouncementBar = () => {
